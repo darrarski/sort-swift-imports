@@ -1,5 +1,6 @@
 import AppFeature
 import ComposableArchitecture
+import SortSwiftImports
 import SwiftUI
 
 @main
@@ -9,7 +10,11 @@ struct App: SwiftUI.App {
       AppView(store: .init(
         initialState: .init(),
         reducer: appReducer,
-        environment: .init()
+        environment: .init(
+          sort: .live,
+          sortScheduler: DispatchQueue.global(qos: .userInitiated).eraseToAnyScheduler(),
+          mainScheduler: .main
+        )
       ))
     }
   }

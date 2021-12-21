@@ -3,22 +3,115 @@ import SortSwiftImports
 import SwiftUI
 
 public struct AppState: Equatable {
-  public init() {}
+  public init(
+    text: String = Self.demoText,
+    isSorting: Bool = false,
+    alert: AlertState<AppAction>? = nil
+  ) {
+    self.text = text
+    self.isSorting = isSorting
+    self.alert = alert
+  }
+
+  @BindableState public var text: String
+  public var isSorting: Bool
+  public var alert: AlertState<AppAction>?
 }
 
-public enum AppAction: Equatable {}
+extension AppState {
+  public static let demoText = """
+  import SwiftUI
+  import ComposableArchitecture
+  import SortSwiftImports
+
+  public struct AppState: Equatable {
+      public init(
+          text: String = "",
+          isSorting: Bool = false,
+          alert: AlertState<AppAction>? = nil
+      ) {
+          self.text = text
+          self.isSorting = isSorting
+          self.alert = alert
+      }
+
+      @BindableState public var text: String
+      public var isSorting: Bool
+      public var alert: AlertState<AppAction>?
+  }
+
+  """
+}
+
+public enum AppAction: Equatable, BindableAction {
+  case sort
+  case didSort(Result<String, SortSwiftImports.Error>)
+  case binding(BindingAction<AppState>)
+  case dismissAlert
+}
 
 public struct AppEnvironment {
-  public init() {}
+  public init(
+    sort: SortSwiftImports,
+    sortScheduler: AnySchedulerOf<DispatchQueue>,
+    mainScheduler: AnySchedulerOf<DispatchQueue>
+  ) {
+    self.sort = sort
+    self.sortScheduler = sortScheduler
+    self.mainScheduler = mainScheduler
+  }
+
+  public var sort: SortSwiftImports
+  public var sortScheduler: AnySchedulerOf<DispatchQueue>
+  public var mainScheduler: AnySchedulerOf<DispatchQueue>
 }
 
 #if DEBUG
 extension AppEnvironment {
-  public static let failing = Self()
+  public static let failing = Self(
+    sort: .failing,
+    sortScheduler: .failing,
+    mainScheduler: .failing
+  )
 }
 #endif
 
-public let appReducer = Reducer<AppState, AppAction, AppEnvironment>.empty
+public let appReducer = Reducer<AppState, AppAction, AppEnvironment>
+{ state, action, env in
+  switch action {
+  case .sort:
+    guard state.isSorting == false else {
+      return .none
+    }
+    state.isSorting = true
+    return Effect
+      .future { [text = state.text] in $0(env.sort(in: text)) }
+      .subscribe(on: env.sortScheduler)
+      .receive(on: env.mainScheduler)
+      .catchToEffect(AppAction.didSort)
+
+  case let .didSort(.success(text)):
+    state.isSorting = false
+    state.text = text
+    return .none
+
+  case let .didSort(.failure(error)):
+    state.isSorting = false
+    state.alert = .init(
+      title: .init("Error"),
+      message: .init(error.localizedDescription)
+    )
+    return .none
+
+  case .dismissAlert:
+    state.alert = nil
+    return .none
+
+  case .binding(_):
+    return .none
+  }
+}
+.binding()
 
 public struct AppView: View {
   public init(store: Store<AppState, AppAction>) {
@@ -28,14 +121,38 @@ public struct AppView: View {
   let store: Store<AppState, AppAction>
 
   struct ViewState: Equatable {
-    init(state: AppState) {}
+    let text: String
+    let isSorting: Bool
+
+    init(state: AppState) {
+      text = state.text
+      isSorting = state.isSorting
+    }
   }
 
   public var body: some View {
     WithViewStore(store.scope(state: ViewState.init)) { viewStore in
-      Text("AppView")
-        .padding()
+      TextEditor(text: viewStore.binding(
+        get: \.text,
+        send: { .set(\.$text, $0) }
+      ))
+        .disabled(viewStore.isSorting)
         .frame(minWidth: 400, minHeight: 300)
+        .toolbar {
+          ToolbarItemGroup(placement: .primaryAction) {
+            if viewStore.isSorting {
+              ProgressView()
+                .progressViewStyle(.circular)
+                .controlSize(.small)
+            }
+
+            Button(action: { viewStore.send(.sort) }) {
+              Text("Sort Swift Imports")
+            }
+            .disabled(viewStore.isSorting)
+            .alert(store.scope(state: \.alert), dismiss: .dismissAlert)
+          }
+        }
     }
   }
 }
