@@ -1,0 +1,31 @@
+{
+  "configurations" : [
+    {
+      "id" : "982D3086-5D21-48F6-9D47-C9903F4150F6",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "AppFeatureTests",
+        "name" : "AppFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "SortSwiftImportsTests",
+        "name" : "SortSwiftImportsTests"
+      }
+    }
+  ],
+  "version" : 1
+}

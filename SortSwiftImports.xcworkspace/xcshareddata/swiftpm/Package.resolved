@@ -1,0 +1,16 @@
+{
+  "object": {
+    "pins": [
+      {
+        "package": "swiftui-app-icon-creator",
+        "repositoryURL": "https://github.com/darrarski/swiftui-app-icon-creator.git",
+        "state": {
+          "branch": null,
+          "revision": "46640c395a1488295ceb30df3a4b786fa444b397",
+          "version": "1.1.0"
+        }
+      }
+    ]
+  },
+  "version": 1
+}
