@@ -2,12 +2,30 @@
   "object": {
     "pins": [
       {
+        "package": "CodeEditor",
+        "repositoryURL": "https://github.com/ZeeZide/CodeEditor.git",
+        "state": {
+          "branch": null,
+          "revision": "5856fac22b0a2174dbdea212784567c8c9cd1129",
+          "version": "1.2.0"
+        }
+      },
+      {
         "package": "combine-schedulers",
         "repositoryURL": "https://github.com/pointfreeco/combine-schedulers",
         "state": {
           "branch": null,
           "revision": "4cf088c29a20f52be0f2ca54992b492c54e0076b",
           "version": "0.5.3"
+        }
+      },
+      {
+        "package": "Highlightr",
+        "repositoryURL": "https://github.com/raspu/Highlightr",
+        "state": {
+          "branch": null,
+          "revision": "93199b9e434f04bda956a613af8f571933f9f037",
+          "version": "2.1.2"
         }
       },
       {

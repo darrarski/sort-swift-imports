@@ -1,3 +1,4 @@
+import CodeEditor
 import ComposableArchitecture
 import SortSwiftImports
 import SwiftUI
@@ -119,6 +120,7 @@ public struct AppView: View {
   }
 
   let store: Store<AppState, AppAction>
+  @Environment(\.colorScheme) var colorScheme
 
   struct ViewState: Equatable {
     let text: String
@@ -132,12 +134,25 @@ public struct AppView: View {
 
   public var body: some View {
     WithViewStore(store.scope(state: ViewState.init)) { viewStore in
-      TextEditor(text: viewStore.binding(
-        get: \.text,
-        send: { .set(\.$text, $0) }
-      ))
+      CodeEditor(
+        source: viewStore.binding(
+          get: \.text,
+          send: { .set(\.$text, $0) }
+        ),
+        language: .swift,
+        theme: {
+          switch colorScheme {
+          case .light:
+            return .atelierSavannaLight
+          case .dark:
+            return .atelierSavannaDark
+          @unknown default:
+            return .atelierSavannaLight
+          }
+        }()
+      )
         .disabled(viewStore.isSorting)
-        .frame(minWidth: 400, minHeight: 300)
+        .frame(minWidth: 500, minHeight: 500)
         .toolbar {
           ToolbarItemGroup(placement: .primaryAction) {
             if viewStore.isSorting {
