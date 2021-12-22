@@ -209,6 +209,7 @@ public struct EditorView: View {
   private func sortButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
     Button(action: { viewStore.send(.sort) }) {
       Label("Sort Swift Imports", systemImage: "arrow.up.arrow.down")
+        .labelStyle(.titleAndIcon)
     }
     .disabled(viewStore.isSorting)
     .alert(store.scope(state: \.alert), dismiss: .dismissAlert)
@@ -217,12 +218,14 @@ public struct EditorView: View {
   private func aboutButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
     Button(action: { viewStore.send(.openAbout) }) {
       Label("About the app", systemImage: "questionmark.circle")
+        .labelStyle(.titleAndIcon)
     }
   }
 
   private func helpButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
     Button(action: { viewStore.send(.openHelp) }) {
       Label("Help", systemImage: "questionmark.circle")
+        .labelStyle(.titleAndIcon)
     }
   }
 }
