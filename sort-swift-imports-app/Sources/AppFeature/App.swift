@@ -13,36 +13,38 @@ struct App: SwiftUI.App {
 
   var body: some Scene {
     WindowGroup {
-      #if os(macOS)
-      LazyView(content: editorView)
-      #elseif os(iOS)
-      NavigationView {
+      LazyView {
+        #if os(macOS)
         editorView()
-          .navigationTitle(appDelegate.appInfo.name)
-          .navigationBarTitleDisplayMode(.inline)
-      }
-      .navigationViewStyle(.stack)
-      .sheet(isPresented: $isPresentingAbout) {
+        #elseif os(iOS)
         NavigationView {
-          ScrollView(.vertical) {
-            AboutView(appInfo: appDelegate.appInfo)
-          }
-          .navigationTitle("About the app")
-          .navigationBarTitleDisplayMode(.inline)
+          editorView()
+            .navigationTitle(appDelegate.appInfo.name)
+            .navigationBarTitleDisplayMode(.inline)
         }
         .navigationViewStyle(.stack)
-      }
-      .sheet(isPresented: $isPresentingHelp) {
-        NavigationView {
-          ScrollView(.vertical) {
-            HelpView()
+        .sheet(isPresented: $isPresentingAbout) {
+          NavigationView {
+            ScrollView(.vertical) {
+              AboutView(appInfo: appDelegate.appInfo)
+            }
+            .navigationTitle("About the app")
+            .navigationBarTitleDisplayMode(.inline)
           }
-          .navigationTitle("Help")
-          .navigationBarTitleDisplayMode(.inline)
+          .navigationViewStyle(.stack)
         }
-        .navigationViewStyle(.stack)
+        .sheet(isPresented: $isPresentingHelp) {
+          NavigationView {
+            ScrollView(.vertical) {
+              HelpView()
+            }
+            .navigationTitle("Help")
+            .navigationBarTitleDisplayMode(.inline)
+          }
+          .navigationViewStyle(.stack)
+        }
+        #endif
       }
-      #endif
     }
     .commands {
       CommandGroup(replacing: .appInfo) {
