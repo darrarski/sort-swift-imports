@@ -467,11 +467,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Dariusz Rybicki Darrarski. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImportsMacApp;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "Sort Swift Imports";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -495,11 +496,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Dariusz Rybicki Darrarski. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImportsMacApp;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "Sort Swift Imports";
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -524,7 +526,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImportsMacApp.SortSwiftImportsXcodeExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports.SortSwiftImportsXcodeExtension;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "Sort Swift Imports Extension";
 				SKIP_INSTALL = YES;
@@ -550,7 +552,7 @@
 					"@executable_path/../Frameworks",
 					"@executable_path/../../../../Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImportsMacApp.SortSwiftImportsXcodeExtension;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports.SortSwiftImportsXcodeExtension;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "Sort Swift Imports Extension";
 				SKIP_INSTALL = YES;
@@ -580,7 +582,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImportsIOSApp;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "Sort Swift Imports";
 				SDKROOT = iphoneos;
@@ -611,7 +613,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImportsIOSApp;
+				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
 				PRODUCT_NAME = "Sort Swift Imports";
 				SDKROOT = iphoneos;
