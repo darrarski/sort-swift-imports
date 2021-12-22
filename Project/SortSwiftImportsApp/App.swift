@@ -9,17 +9,24 @@ struct App: SwiftUI.App {
 
   var body: some Scene {
     WindowGroup {
-      AppView(store: .init(
-        initialState: .init(),
-        reducer: appReducer,
-        environment: .init(
-          sort: .live,
-          sortScheduler: DispatchQueue.global(qos: .userInitiated).eraseToAnyScheduler(),
-          mainScheduler: .main
-        )
-      ))
+      LazyView {
+        AppView(store: .init(
+          initialState: .init(),
+          reducer: appReducer,
+          environment: .init(
+            sort: .live,
+            sortScheduler: DispatchQueue.global(qos: .userInitiated).eraseToAnyScheduler(),
+            mainScheduler: .main
+          )
+        ))
+      }
     }
   }
+}
+
+struct LazyView<Content>: View where Content: View {
+  var content: () -> Content
+  var body: some View { content() }
 }
 
 final class AppDelegate: NSObject, NSApplicationDelegate {
