@@ -13,6 +13,9 @@ struct HelpView: View {
           "Xcode​Kit and Xcode Source Editor Extensions - Using pluginkit",
           systemImage: "link"
         )
+          #if os(iOS)
+          .padding()
+          #endif
       }
       .padding(.bottom)
 
@@ -23,12 +26,17 @@ struct HelpView: View {
           "Sort Swift Imports Website",
           systemImage: "link"
         )
+          #if os(iOS)
+          .padding()
+          #endif
       }
     }
     .fixedSize(horizontal: false, vertical: true)
     .padding()
+    #if os(macOS)
     .padding()
     .frame(width: 480, alignment: .topLeading)
+    #endif
   }
 }
 

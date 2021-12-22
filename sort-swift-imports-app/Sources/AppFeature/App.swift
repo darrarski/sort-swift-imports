@@ -7,6 +7,8 @@ struct App: SwiftUI.App {
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
   #elseif os(iOS)
   @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  @State var isPresentingAbout = false
+  @State var isPresentingHelp = false
   #endif
 
   var body: some Scene {
@@ -18,6 +20,24 @@ struct App: SwiftUI.App {
         editorView()
           .navigationTitle(appDelegate.appInfo.name)
           .navigationBarTitleDisplayMode(.inline)
+          .background(NavigationLink(
+            isActive: $isPresentingAbout,
+            destination: {
+              ScrollView(.vertical) {
+                AboutView(appInfo: appDelegate.appInfo)
+              }
+            },
+            label: EmptyView.init
+          ))
+          .background(NavigationLink(
+            isActive: $isPresentingHelp,
+            destination: {
+              ScrollView(.vertical) {
+                HelpView()
+              }
+            },
+            label: EmptyView.init
+          ))
       }
       .navigationViewStyle(.stack)
       #endif
@@ -54,7 +74,7 @@ struct App: SwiftUI.App {
     #if os(macOS)
     appDelegate.openAboutWindow()
     #elseif os(iOS)
-    // TODO:
+    isPresentingAbout = true
     #endif
   }
 
@@ -62,7 +82,7 @@ struct App: SwiftUI.App {
     #if os(macOS)
     appDelegate.openHelpWindow()
     #elseif os(iOS)
-    // TODO:
+    isPresentingHelp = true
     #endif
   }
 }

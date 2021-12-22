@@ -23,14 +23,23 @@ struct AboutView: View {
       VStack(alignment: .leading) {
         Link(destination: URL(string: "https://sort-swift-imports.darrarski.pl")!) {
           Label("\(appInfo.name) Website", systemImage: "link")
+            #if os(iOS)
+            .padding()
+            #endif
         }
 
         Link(destination: URL(string: "https://darrarski.pl")!) {
           Label("Dariusz Rybicki Darrarski", systemImage: "link")
+            #if os(iOS)
+            .padding()
+            #endif
         }
       }
     }
+    .multilineTextAlignment(.center)
+    #if os(macOS)
     .fixedSize(horizontal: true, vertical: false)
+    #endif
     .padding()
     .padding()
   }
