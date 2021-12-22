@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppFeature"
-               BuildableName = "AppFeature"
-               BlueprintName = "AppFeature"
+               BlueprintIdentifier = "EditorFeature"
+               BuildableName = "EditorFeature"
+               BlueprintName = "EditorFeature"
                ReferencedContainer = "container:">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,9 +33,9 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "AppFeatureTests"
-               BuildableName = "AppFeatureTests"
-               BlueprintName = "AppFeatureTests"
+               BlueprintIdentifier = "EditorFeatureTests"
+               BuildableName = "EditorFeatureTests"
+               BlueprintName = "EditorFeatureTests"
                ReferencedContainer = "container:">
             </BuildableReference>
          </TestableReference>
@@ -61,9 +61,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "AppFeature"
-            BuildableName = "AppFeature"
-            BlueprintName = "AppFeature"
+            BlueprintIdentifier = "EditorFeature"
+            BuildableName = "EditorFeature"
+            BlueprintName = "EditorFeature"
             ReferencedContainer = "container:">
          </BuildableReference>
       </MacroExpansion>

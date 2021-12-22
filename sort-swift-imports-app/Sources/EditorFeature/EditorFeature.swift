@@ -3,24 +3,24 @@ import ComposableArchitecture
 import SortSwiftImports
 import SwiftUI
 
-public struct AppState: Equatable {
+public struct EditorState: Equatable {
   public init(
-    text: String = Self.demoText,
+    content: String = Self.demoContent,
     isSorting: Bool = false,
-    alert: AlertState<AppAction>? = nil
+    alert: AlertState<EditorAction>? = nil
   ) {
-    self.text = text
+    self.content = content
     self.isSorting = isSorting
     self.alert = alert
   }
 
-  @BindableState public var text: String
+  @BindableState public var content: String
   public var isSorting: Bool
-  public var alert: AlertState<AppAction>?
+  public var alert: AlertState<EditorAction>?
 }
 
-extension AppState {
-  public static let demoText = """
+extension EditorState {
+  public static let demoContent = """
   import SwiftUI
   import ComposableArchitecture
   import SortSwiftImports
@@ -44,14 +44,14 @@ extension AppState {
   """
 }
 
-public enum AppAction: Equatable, BindableAction {
+public enum EditorAction: Equatable, BindableAction {
   case sort
   case didSort(Result<String, SortSwiftImports.Error>)
-  case binding(BindingAction<AppState>)
+  case binding(BindingAction<EditorState>)
   case dismissAlert
 }
 
-public struct AppEnvironment {
+public struct EditorEnvironment {
   public init(
     sort: SortSwiftImports,
     sortScheduler: AnySchedulerOf<DispatchQueue>,
@@ -68,7 +68,7 @@ public struct AppEnvironment {
 }
 
 #if DEBUG
-extension AppEnvironment {
+extension EditorEnvironment {
   public static let failing = Self(
     sort: .failing,
     sortScheduler: .failing,
@@ -77,7 +77,7 @@ extension AppEnvironment {
 }
 #endif
 
-public let appReducer = Reducer<AppState, AppAction, AppEnvironment>
+public let editorReducer = Reducer<EditorState, EditorAction, EditorEnvironment>
 { state, action, env in
   switch action {
   case .sort:
@@ -86,14 +86,14 @@ public let appReducer = Reducer<AppState, AppAction, AppEnvironment>
     }
     state.isSorting = true
     return Effect
-      .future { [text = state.text] in $0(env.sort(in: text)) }
+      .future { [text = state.content] in $0(env.sort(in: text)) }
       .subscribe(on: env.sortScheduler)
       .receive(on: env.mainScheduler)
-      .catchToEffect(AppAction.didSort)
+      .catchToEffect(EditorAction.didSort)
 
   case let .didSort(.success(text)):
     state.isSorting = false
-    state.text = text
+    state.content = text
     return .none
 
   case let .didSort(.failure(error)):
@@ -114,20 +114,20 @@ public let appReducer = Reducer<AppState, AppAction, AppEnvironment>
 }
 .binding()
 
-public struct AppView: View {
-  public init(store: Store<AppState, AppAction>) {
+public struct EditorView: View {
+  public init(store: Store<EditorState, EditorAction>) {
     self.store = store
   }
 
-  let store: Store<AppState, AppAction>
+  let store: Store<EditorState, EditorAction>
   @Environment(\.colorScheme) var colorScheme
 
   struct ViewState: Equatable {
-    let text: String
+    let content: String
     let isSorting: Bool
 
-    init(state: AppState) {
-      text = state.text
+    init(state: EditorState) {
+      content = state.content
       isSorting = state.isSorting
     }
   }
@@ -136,8 +136,8 @@ public struct AppView: View {
     WithViewStore(store.scope(state: ViewState.init)) { viewStore in
       CodeEditor(
         source: viewStore.binding(
-          get: \.text,
-          send: { .set(\.$text, $0) }
+          get: \.content,
+          send: { .set(\.$content, $0) }
         ),
         language: .swift,
         theme: {
@@ -175,7 +175,7 @@ public struct AppView: View {
 #if DEBUG
 public struct AppView_Previews: PreviewProvider {
   public static var previews: some View {
-    AppView(store: .init(
+    EditorView(store: .init(
       initialState: .init(),
       reducer: .empty,
       environment: ()

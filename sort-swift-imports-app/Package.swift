@@ -8,7 +8,7 @@ let package = Package(
     .macOS(.v12),
   ],
   products: [
-    .library(name: "AppFeature", targets: ["AppFeature"]),
+    .library(name: "EditorFeature", targets: ["EditorFeature"]),
   ],
   dependencies: [
     .package(name: "sort-swift-imports", path: "../"),
@@ -24,13 +24,13 @@ let package = Package(
     ),
   ],
   targets: [
-    .target(name: "AppFeature", dependencies: [
+    .target(name: "EditorFeature", dependencies: [
       .product(name: "CodeEditor", package: "CodeEditor"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       .product(name: "SortSwiftImports", package: "sort-swift-imports"),
     ]),
-    .testTarget(name: "AppFeatureTests", dependencies: [
-      .target(name: "AppFeature"),
+    .testTarget(name: "EditorFeatureTests", dependencies: [
+      .target(name: "EditorFeature"),
     ]),
   ]
 )

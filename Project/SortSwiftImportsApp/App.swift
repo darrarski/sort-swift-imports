@@ -1,5 +1,5 @@
-import AppFeature
 import ComposableArchitecture
+import EditorFeature
 import SortSwiftImports
 import SwiftUI
 
@@ -10,9 +10,9 @@ struct App: SwiftUI.App {
   var body: some Scene {
     WindowGroup {
       LazyView {
-        AppView(store: .init(
+        EditorView(store: .init(
           initialState: .init(),
-          reducer: appReducer,
+          reducer: editorReducer,
           environment: .init(
             sort: .live,
             sortScheduler: DispatchQueue.global(qos: .userInitiated).eraseToAnyScheduler(),

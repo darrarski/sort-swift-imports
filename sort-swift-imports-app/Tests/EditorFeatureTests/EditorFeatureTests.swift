@@ -1,9 +1,9 @@
 import ComposableArchitecture
 import SortSwiftImports
 import XCTest
-@testable import AppFeature
+@testable import EditorFeature
 
-final class AppFeatureTests: XCTestCase {
+final class EditorFeatureTests: XCTestCase {
   func testSorting() {
     let input = "input"
     let output = "output"
@@ -12,7 +12,7 @@ final class AppFeatureTests: XCTestCase {
 
     var didSort = [String]()
 
-    var environment = AppEnvironment.failing
+    var environment = EditorEnvironment.failing
     environment.sortScheduler = sortScheduler.eraseToAnyScheduler()
     environment.mainScheduler = mainScheduler.eraseToAnyScheduler()
     environment.sort = .init { text in
@@ -21,8 +21,8 @@ final class AppFeatureTests: XCTestCase {
     }
 
     let store = TestStore(
-      initialState: .init(text: input),
-      reducer: appReducer,
+      initialState: .init(content: input),
+      reducer: editorReducer,
       environment: environment
     )
 
@@ -42,21 +42,21 @@ final class AppFeatureTests: XCTestCase {
 
     store.receive(.didSort(.success(output))) {
       $0.isSorting = false
-      $0.text = output
+      $0.content = output
     }
   }
 
   func testSortingFailure() {
     let error = SortSwiftImports.Error.noImportsFound
 
-    var environment = AppEnvironment.failing
+    var environment = EditorEnvironment.failing
     environment.sortScheduler = .immediate
     environment.mainScheduler = .immediate
     environment.sort = .init { _ in .failure(error) }
 
     let store = TestStore(
       initialState: .init(),
-      reducer: appReducer,
+      reducer: editorReducer,
       environment: environment
     )
 

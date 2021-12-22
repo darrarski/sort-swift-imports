@@ -15,15 +15,15 @@
     {
       "target" : {
         "containerPath" : "container:..",
-        "identifier" : "AppFeatureTests",
-        "name" : "AppFeatureTests"
+        "identifier" : "SortSwiftImportsTests",
+        "name" : "SortSwiftImportsTests"
       }
     },
     {
       "target" : {
-        "containerPath" : "container:..",
-        "identifier" : "SortSwiftImportsTests",
-        "name" : "SortSwiftImportsTests"
+        "containerPath" : "container:..\/sort-swift-imports-app",
+        "identifier" : "EditorFeatureTests",
+        "name" : "EditorFeatureTests"
       }
     }
   ],
