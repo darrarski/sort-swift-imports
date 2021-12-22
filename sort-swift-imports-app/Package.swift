@@ -22,8 +22,8 @@ let package = Package(
     ),
     .package(
       name: "CodeEditor",
-      url: "https://github.com/ZeeZide/CodeEditor.git",
-      .upToNextMajor(from: "1.2.0")
+      url: "https://github.com/darrarski/CodeEditor.git",
+      .branch("main")
     ),
   ],
   targets: [

@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "CodeEditor",
-        "repositoryURL": "https://github.com/ZeeZide/CodeEditor.git",
+        "repositoryURL": "https://github.com/darrarski/CodeEditor.git",
         "state": {
-          "branch": null,
-          "revision": "5856fac22b0a2174dbdea212784567c8c9cd1129",
-          "version": "1.2.0"
+          "branch": "main",
+          "revision": "4bc7b549080adb37ba41d7b831338604166c29f2",
+          "version": null
         }
       },
       {
