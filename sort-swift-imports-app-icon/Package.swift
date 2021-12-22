@@ -15,7 +15,7 @@ let package = Package(
     .package(
       name: "swiftui-app-icon-creator",
       url: "https://github.com/darrarski/swiftui-app-icon-creator.git",
-      .upToNextMajor(from: "1.1.0")
+      .upToNextMajor(from: "1.2.0")
     ),
   ],
   targets: [
