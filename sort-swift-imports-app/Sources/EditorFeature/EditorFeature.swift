@@ -152,7 +152,9 @@ public struct EditorView: View {
         theme: editorTheme
       )
         .disabled(viewStore.isSorting)
+        #if os(macOS)
         .frame(minWidth: 500, minHeight: 500)
+        #endif
         .toolbar {
           ToolbarItemGroup(placement: toolbarItemPlacement) {
             progressView(viewStore)
