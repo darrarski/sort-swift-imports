@@ -22,22 +22,23 @@ SortSwiftImports (Xcode Workspace)
  ├─ sort-swift-imports (Swift Package)
  |   └─ SortSwiftImports (Library)
  ├─ sort-swift-imports-app (Swift Package)
+ |   ├─ AppFeature (Library)
  |   └─ EditorFeature (Library)
  ├─ sort-swift-imports-app-icon (Swift Package)
  |   ├─ AppIcon (Library)
  |   └─ AppIconExport (macOS executable)
  └─ Project (Xcode Project)
-     ├─ SortSwiftImportsApp (macOS Application)
-     └─ SortSwiftImportsExtension (Xcode Source Editor Extension)
+     ├─ SortSwiftImportsMacApp (macOS Application)
+     └─ SortSwiftImportsXcodeExtension (Xcode Source Editor Extension)
 ```
 
 ### Build schemes
 
-- Use `SortSwiftImportsApp` scheme to build and run the application.
-- Use `SortSwiftImportsExtension` scheme to build and run the Xcode extension. 
+- Use `SortSwiftImportsMacApp` scheme to build and run the macOS application.
+- Use `SortSwiftImportsMacApp` scheme to run all tests on macOS.
+- Use `SortSwiftImportsXcodeExtension` scheme to build and run the Xcode Source Editor Extension. 
 - Use `AppIcon` scheme for building & previewing the app icon in Xcode.
 - Use `ExportAppIcon` scheme for exporting the app icon into asset catalog.
-- Use `Tests` scheme to run all tests.
 
 Use other schemes for building and testing the libraries.
 
