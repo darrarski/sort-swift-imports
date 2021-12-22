@@ -69,6 +69,7 @@
 		31A053572773588200101B68 /* Sort Swift Imports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sort Swift Imports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A0535D2773588300101B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		31A053692773BCC600101B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		31A0536A2773C3EC00101B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -125,6 +126,7 @@
 		3108B61627720A250079405F /* SortSwiftImportsMacApp */ = {
 			isa = PBXGroup;
 			children = (
+				31A0536A2773C3EC00101B68 /* Info.plist */,
 				3108B61B27720A260079405F /* Assets.xcassets */,
 				3108B62027720A260079405F /* SortSwiftImportsMacApp.entitlements */,
 			);
@@ -466,6 +468,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SortSwiftImportsMacApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Dariusz Rybicki Darrarski. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -495,6 +498,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SortSwiftImportsMacApp/Info.plist;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Dariusz Rybicki Darrarski. All rights reserved.";
 				LD_RUNPATH_SEARCH_PATHS = (
