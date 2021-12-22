@@ -20,26 +20,28 @@ struct App: SwiftUI.App {
         editorView()
           .navigationTitle(appDelegate.appInfo.name)
           .navigationBarTitleDisplayMode(.inline)
-          .background(NavigationLink(
-            isActive: $isPresentingAbout,
-            destination: {
-              ScrollView(.vertical) {
-                AboutView(appInfo: appDelegate.appInfo)
-              }
-            },
-            label: EmptyView.init
-          ))
-          .background(NavigationLink(
-            isActive: $isPresentingHelp,
-            destination: {
-              ScrollView(.vertical) {
-                HelpView()
-              }
-            },
-            label: EmptyView.init
-          ))
       }
       .navigationViewStyle(.stack)
+      .sheet(isPresented: $isPresentingAbout) {
+        NavigationView {
+          ScrollView(.vertical) {
+            AboutView(appInfo: appDelegate.appInfo)
+          }
+          .navigationTitle("About the app")
+          .navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationViewStyle(.stack)
+      }
+      .sheet(isPresented: $isPresentingHelp) {
+        NavigationView {
+          ScrollView(.vertical) {
+            HelpView()
+          }
+          .navigationTitle("Help")
+          .navigationBarTitleDisplayMode(.inline)
+        }
+        .navigationViewStyle(.stack)
+      }
       #endif
     }
     .commands {

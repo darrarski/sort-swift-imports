@@ -33,8 +33,8 @@ struct HelpView: View {
     }
     .fixedSize(horizontal: false, vertical: true)
     .padding()
-    #if os(macOS)
     .padding()
+    #if os(macOS)
     .frame(width: 480, alignment: .topLeading)
     #endif
   }
