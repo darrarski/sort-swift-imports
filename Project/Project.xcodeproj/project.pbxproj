@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3101056B277217670012A51E /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3101056A277217670012A51E /* App.swift */; };
 		3108B61C27720A260079405F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3108B61B27720A260079405F /* Assets.xcassets */; };
 		3108B62F27720E540079405F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B62E27720E540079405F /* Cocoa.framework */; };
 		3108B63427720E540079405F /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3108B63327720E540079405F /* SourceEditorExtension.swift */; };
@@ -15,7 +14,7 @@
 		3108B64227720F410079405F /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B63027720E540079405F /* XcodeKit.framework */; };
 		3108B64327720F410079405F /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B63027720E540079405F /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3108B647277215D70079405F /* LocalizedErrorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3108B646277215D70079405F /* LocalizedErrorHelpers.swift */; };
-		313F92EB27731D3B004BFD43 /* EditorFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 313F92EA27731D3B004BFD43 /* EditorFeature */; };
+		312F205527732DC800C458A0 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 312F205427732DC800C458A0 /* AppFeature */; };
 		31ECF618277218E90055363F /* SortSwiftImports in Frameworks */ = {isa = PBXBuildFile; productRef = 31ECF617277218E90055363F /* SortSwiftImports */; };
 /* End PBXBuildFile section */
 
@@ -55,7 +54,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		3101056A277217670012A51E /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		3108B61427720A250079405F /* Sort Swift Imports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sort Swift Imports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3108B61B27720A260079405F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3108B62027720A260079405F /* SortSwiftImportsApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSwiftImportsApp.entitlements; sourceTree = "<group>"; };
@@ -73,7 +71,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				313F92EB27731D3B004BFD43 /* EditorFeature in Frameworks */,
+				312F205527732DC800C458A0 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,7 +110,6 @@
 		3108B61627720A250079405F /* SortSwiftImportsApp */ = {
 			isa = PBXGroup;
 			children = (
-				3101056A277217670012A51E /* App.swift */,
 				3108B61B27720A260079405F /* Assets.xcassets */,
 				3108B62027720A260079405F /* SortSwiftImportsApp.entitlements */,
 			);
@@ -158,7 +155,7 @@
 			);
 			name = SortSwiftImportsApp;
 			packageProductDependencies = (
-				313F92EA27731D3B004BFD43 /* EditorFeature */,
+				312F205427732DC800C458A0 /* AppFeature */,
 			);
 			productName = SortSwiftImportsApp;
 			productReference = 3108B61427720A250079405F /* Sort Swift Imports.app */;
@@ -246,7 +243,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3101056B277217670012A51E /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -533,9 +529,9 @@
 /* End XCConfigurationList section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		313F92EA27731D3B004BFD43 /* EditorFeature */ = {
+		312F205427732DC800C458A0 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
-			productName = EditorFeature;
+			productName = AppFeature;
 		};
 		31ECF617277218E90055363F /* SortSwiftImports */ = {
 			isa = XCSwiftPackageProductDependency;

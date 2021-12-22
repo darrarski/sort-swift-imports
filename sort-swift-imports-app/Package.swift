@@ -8,6 +8,7 @@ let package = Package(
     .macOS(.v12),
   ],
   products: [
+    .library(name: "AppFeature", targets: ["AppFeature"]),
     .library(name: "EditorFeature", targets: ["EditorFeature"]),
   ],
   dependencies: [
@@ -24,6 +25,12 @@ let package = Package(
     ),
   ],
   targets: [
+    .target(name: "AppFeature", dependencies: [
+      .target(name: "EditorFeature"),
+    ]),
+    .testTarget(name: "AppFeatureTests", dependencies: [
+      .target(name: "AppFeature"),
+    ]),
     .target(name: "EditorFeature", dependencies: [
       .product(name: "CodeEditor", package: "CodeEditor"),
       .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),

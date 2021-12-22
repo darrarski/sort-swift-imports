@@ -1,6 +1,4 @@
-import ComposableArchitecture
 import EditorFeature
-import SortSwiftImports
 import SwiftUI
 
 @main
@@ -21,16 +19,5 @@ struct App: SwiftUI.App {
         ))
       }
     }
-  }
-}
-
-struct LazyView<Content>: View where Content: View {
-  var content: () -> Content
-  var body: some View { content() }
-}
-
-final class AppDelegate: NSObject, NSApplicationDelegate {
-  func applicationDidFinishLaunching(_ notification: Notification) {
-    NSWindow.allowsAutomaticWindowTabbing = false
   }
 }
