@@ -18,6 +18,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   private func createAboutWindow() -> NSWindow {
     let controller = NSHostingController(rootView: AboutView(appInfo: appInfo))
     let window = NSWindow(contentViewController: controller)
+    window.styleMask = [.titled, .closable]
     window.title = "About \(appInfo.name)"
     return window
   }
@@ -25,6 +26,7 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
   private func createHelpWindow() -> NSWindow {
     let controller = NSHostingController(rootView: HelpView())
     let window = NSWindow(contentViewController: controller)
+    window.styleMask = [.titled, .closable]
     window.title = "\(appInfo.name) Help"
     return window
   }
