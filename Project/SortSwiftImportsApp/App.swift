@@ -5,6 +5,8 @@ import SwiftUI
 
 @main
 struct App: SwiftUI.App {
+  @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+
   var body: some Scene {
     WindowGroup {
       AppView(store: .init(
@@ -17,5 +19,11 @@ struct App: SwiftUI.App {
         )
       ))
     }
+  }
+}
+
+final class AppDelegate: NSObject, NSApplicationDelegate {
+  func applicationDidFinishLaunching(_ notification: Notification) {
+    NSWindow.allowsAutomaticWindowTabbing = false
   }
 }
