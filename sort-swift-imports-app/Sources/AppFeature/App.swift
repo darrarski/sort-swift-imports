@@ -21,9 +21,14 @@ struct App: SwiftUI.App {
       }
     }
     .commands {
+      CommandGroup(replacing: .appInfo) {
+        Button(action: { appDelegate.openAboutWindow() }) {
+          Text("About \(appDelegate.appInfo.name)")
+        }
+      }
       CommandGroup(replacing: .help) {
         Button(action: { appDelegate.openHelpWindow() }) {
-          Text("Sort Swift Imports Help")
+          Text("\(appDelegate.appInfo.name) Help")
         }
       }
     }

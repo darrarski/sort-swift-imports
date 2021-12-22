@@ -13,6 +13,7 @@ let package = Package(
   ],
   dependencies: [
     .package(name: "sort-swift-imports", path: "../"),
+    .package(name: "sort-swift-imports-app-icon", path: "../sort-swift-imports-app-icon"),
     .package(
       name: "swift-composable-architecture",
       url: "https://github.com/pointfreeco/swift-composable-architecture.git",
@@ -27,6 +28,7 @@ let package = Package(
   targets: [
     .target(name: "AppFeature", dependencies: [
       .target(name: "EditorFeature"),
+      .product(name: "AppIcon", package: "sort-swift-imports-app-icon"),
     ]),
     .testTarget(name: "AppFeatureTests", dependencies: [
       .target(name: "AppFeature"),
