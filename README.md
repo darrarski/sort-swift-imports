@@ -41,8 +41,8 @@ SortSwiftImports (Xcode Workspace)
 - Use `SortSwiftImportsIOSApp` scheme to build and run the iOS application.
 - Use `SortSwiftImportsIOSApp` scheme to run all tests on iOS simulator.
 - Use `SortSwiftImportsXcodeExtension` scheme to build and run the Xcode Source Editor Extension. 
-- Use `AppIcon` scheme for building & previewing the app icon in Xcode.
-- Use `ExportAppIcon` scheme for exporting the app icon into asset catalog.
+- Use `AppIcon` scheme for building & previewing the app icon in Xcode (use macOS destination).
+- Use `ExportAppIcon` scheme for exporting the app icon into asset catalog (use macOS destination).
 
 Use other schemes for building and testing the libraries.
 

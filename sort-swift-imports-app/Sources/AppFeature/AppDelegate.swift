@@ -1,9 +1,14 @@
-import AppKit
 import SwiftUI
+#if os(macOS)
+import AppKit
+#elseif os(iOS)
+import UIKit
+#endif
 
-final class AppDelegate: NSObject, NSApplicationDelegate {
+final class AppDelegate: NSObject {
   let appInfo = AppInfo(.main)
 
+  #if os(macOS)
   func openAboutWindow() {
     aboutWindow.makeKeyAndOrderFront(nil)
   }
@@ -30,4 +35,13 @@ final class AppDelegate: NSObject, NSApplicationDelegate {
     window.title = "\(appInfo.name) Help"
     return window
   }
+  #endif
 }
+
+#if os(macOS)
+extension AppDelegate: NSApplicationDelegate {}
+#endif
+
+#if os(iOS)
+extension AppDelegate: UIApplicationDelegate {}
+#endif

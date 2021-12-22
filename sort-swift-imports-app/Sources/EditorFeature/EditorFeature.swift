@@ -121,6 +121,7 @@ public let editorReducer = Reducer<EditorState, EditorAction, EditorEnvironment>
   }
 }
 .binding()
+.debug()
 
 public struct EditorView: View {
   public init(store: Store<EditorState, EditorAction>) {
@@ -148,40 +149,69 @@ public struct EditorView: View {
           send: { .set(\.$content, $0) }
         ),
         language: .swift,
-        theme: {
-          switch colorScheme {
-          case .light:
-            return .atelierSavannaLight
-          case .dark:
-            return .atelierSavannaDark
-          @unknown default:
-            return .atelierSavannaLight
-          }
-        }()
+        theme: editorTheme
       )
         .disabled(viewStore.isSorting)
         .frame(minWidth: 500, minHeight: 500)
         .toolbar {
-          ToolbarItemGroup(placement: .primaryAction) {
-            if viewStore.isSorting {
-              ProgressView()
-                .progressViewStyle(.circular)
-                .controlSize(.small)
-            }
-
-            Button(action: { viewStore.send(.sort) }) {
-              Label("Sort Swift Imports", systemImage: "arrow.up.arrow.down")
-                .labelStyle(.titleAndIcon)
-            }
-            .disabled(viewStore.isSorting)
-            .alert(store.scope(state: \.alert), dismiss: .dismissAlert)
-
-            Button(action: { viewStore.send(.openHelp) }) {
-              Label("Help", systemImage: "questionmark.circle")
-                .labelStyle(.titleAndIcon)
-            }
+          ToolbarItemGroup(placement: toolbarItemPlacement) {
+            progressView(viewStore)
+            sortButton(viewStore)
+            helpButton(viewStore)
           }
         }
+    }
+  }
+
+  private var editorTheme: CodeEditor.ThemeName {
+    switch colorScheme {
+    case .light:
+      return .atelierSavannaLight
+    case .dark:
+      return .atelierSavannaDark
+    @unknown default:
+      return .atelierSavannaLight
+    }
+  }
+
+  private var toolbarItemPlacement: ToolbarItemPlacement {
+    #if os(macOS)
+    return .primaryAction
+    #elseif os(iOS)
+    return .navigationBarTrailing
+    #endif
+  }
+
+  private var toolbarLabelStyle: some LabelStyle {
+    #if os(macOS)
+    return .titleAndIcon
+    #elseif os(iOS)
+    return .iconOnly
+    #endif
+  }
+
+  @ViewBuilder
+  private func progressView(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
+    if viewStore.isSorting {
+      ProgressView()
+        .progressViewStyle(.circular)
+        .controlSize(.small)
+    }
+  }
+
+  private func sortButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
+    Button(action: { viewStore.send(.sort) }) {
+      Label("Sort Swift Imports", systemImage: "arrow.up.arrow.down")
+        .labelStyle(toolbarLabelStyle)
+    }
+    .disabled(viewStore.isSorting)
+    .alert(store.scope(state: \.alert), dismiss: .dismissAlert)
+  }
+
+  private func helpButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
+    Button(action: { viewStore.send(.openHelp) }) {
+      Label("Help", systemImage: "questionmark.circle")
+        .labelStyle(toolbarLabelStyle)
     }
   }
 }

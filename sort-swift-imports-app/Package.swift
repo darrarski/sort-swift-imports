@@ -6,6 +6,7 @@ let package = Package(
   name: "sort-swift-imports-app",
   platforms: [
     .macOS(.v12),
+    .iOS(.v15),
   ],
   products: [
     .library(name: "AppFeature", targets: ["AppFeature"]),

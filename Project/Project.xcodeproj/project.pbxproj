@@ -15,8 +15,8 @@
 		3108B64327720F410079405F /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B63027720E540079405F /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3108B647277215D70079405F /* LocalizedErrorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3108B646277215D70079405F /* LocalizedErrorHelpers.swift */; };
 		312F205527732DC800C458A0 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 312F205427732DC800C458A0 /* AppFeature */; };
-		31A0535A2773588200101B68 /* App.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31A053592773588200101B68 /* App.swift */; };
 		31A0535E2773588300101B68 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 31A0535D2773588300101B68 /* Assets.xcassets */; };
+		31A05368277359C000101B68 /* AppFeature in Frameworks */ = {isa = PBXBuildFile; productRef = 31A05367277359C000101B68 /* AppFeature */; };
 		31ECF618277218E90055363F /* SortSwiftImports in Frameworks */ = {isa = PBXBuildFile; productRef = 31ECF617277218E90055363F /* SortSwiftImports */; };
 /* End PBXBuildFile section */
 
@@ -67,7 +67,6 @@
 		3108B63827720E540079405F /* SortSwiftImportsXcodeExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSwiftImportsXcodeExtension.entitlements; sourceTree = "<group>"; };
 		3108B646277215D70079405F /* LocalizedErrorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrorHelpers.swift; sourceTree = "<group>"; };
 		31A053572773588200101B68 /* Sort Swift Imports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sort Swift Imports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		31A053592773588200101B68 /* App.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = App.swift; sourceTree = "<group>"; };
 		31A0535D2773588300101B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -94,6 +93,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				31A05368277359C000101B68 /* AppFeature in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,7 +153,6 @@
 		31A053582773588200101B68 /* SortSwiftImportsIOSApp */ = {
 			isa = PBXGroup;
 			children = (
-				31A053592773588200101B68 /* App.swift */,
 				31A0535D2773588300101B68 /* Assets.xcassets */,
 			);
 			path = SortSwiftImportsIOSApp;
@@ -219,6 +218,7 @@
 			);
 			name = SortSwiftImportsIOSApp;
 			packageProductDependencies = (
+				31A05367277359C000101B68 /* AppFeature */,
 			);
 			productName = SortSwiftImportsIOSApp;
 			productReference = 31A053572773588200101B68 /* Sort Swift Imports.app */;
@@ -313,7 +313,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				31A0535A2773588200101B68 /* App.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +659,10 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		312F205427732DC800C458A0 /* AppFeature */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = AppFeature;
+		};
+		31A05367277359C000101B68 /* AppFeature */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = AppFeature;
 		};

@@ -34,6 +34,7 @@ public struct AppIconView: View {
   }
 }
 
+#if os(macOS)
 struct AppIconView_Preivews: PreviewProvider {
   static var previews: some View {
     IconPreviews(
@@ -43,3 +44,4 @@ struct AppIconView_Preivews: PreviewProvider {
     )
   }
 }
+#endif
