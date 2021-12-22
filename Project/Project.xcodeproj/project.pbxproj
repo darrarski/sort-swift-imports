@@ -68,6 +68,7 @@
 		3108B646277215D70079405F /* LocalizedErrorHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizedErrorHelpers.swift; sourceTree = "<group>"; };
 		31A053572773588200101B68 /* Sort Swift Imports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sort Swift Imports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		31A0535D2773588300101B68 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		31A053692773BCC600101B68 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +154,7 @@
 		31A053582773588200101B68 /* SortSwiftImportsIOSApp */ = {
 			isa = PBXGroup;
 			children = (
+				31A053692773BCC600101B68 /* Info.plist */,
 				31A0535D2773588300101B68 /* Assets.xcassets */,
 			);
 			path = SortSwiftImportsIOSApp;
@@ -566,6 +568,8 @@
 				DEVELOPMENT_TEAM = P38XW29864;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SortSwiftImportsIOSApp/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Dariusz Rybicki Darrarski. All rights reserved.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -595,6 +599,8 @@
 				DEVELOPMENT_TEAM = P38XW29864;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = SortSwiftImportsIOSApp/Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "Copyright © 2021 Dariusz Rybicki Darrarski. All rights reserved.";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
