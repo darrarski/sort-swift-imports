@@ -4,6 +4,23 @@ import XCTest
 @testable import EditorFeature
 
 final class EditorFeatureTests: XCTestCase {
+  func testOpenAbout() {
+    var didOpenAbout = 0
+
+    var environment = EditorEnvironment.failing
+    environment.openAbout = { didOpenAbout += 1 }
+
+    let store = TestStore(
+      initialState: .init(),
+      reducer: editorReducer,
+      environment: environment
+    )
+
+    store.send(.openAbout)
+
+    XCTAssertEqual(didOpenAbout, 1)
+  }
+
   func testOpenHelp() {
     var didOpenHelp = 0
 

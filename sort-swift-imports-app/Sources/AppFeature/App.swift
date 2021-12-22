@@ -41,6 +41,7 @@ struct App: SwiftUI.App {
       initialState: .init(),
       reducer: editorReducer,
       environment: .init(
+        openAbout: openAbout,
         openHelp: openHelp,
         sort: .live,
         sortScheduler: DispatchQueue.global(qos: .userInitiated).eraseToAnyScheduler(),

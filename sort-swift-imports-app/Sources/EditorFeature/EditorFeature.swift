@@ -45,6 +45,7 @@ extension EditorState {
 }
 
 public enum EditorAction: Equatable, BindableAction {
+  case openAbout
   case openHelp
   case sort
   case didSort(Result<String, SortSwiftImports.Error>)
@@ -54,17 +55,20 @@ public enum EditorAction: Equatable, BindableAction {
 
 public struct EditorEnvironment {
   public init(
+    openAbout: @escaping () -> Void,
     openHelp: @escaping () -> Void,
     sort: SortSwiftImports,
     sortScheduler: AnySchedulerOf<DispatchQueue>,
     mainScheduler: AnySchedulerOf<DispatchQueue>
   ) {
+    self.openAbout = openAbout
     self.openHelp = openHelp
     self.sort = sort
     self.sortScheduler = sortScheduler
     self.mainScheduler = mainScheduler
   }
 
+  public var openAbout: () -> Void
   public var openHelp: () -> Void
   public var sort: SortSwiftImports
   public var sortScheduler: AnySchedulerOf<DispatchQueue>
@@ -74,6 +78,7 @@ public struct EditorEnvironment {
 #if DEBUG
 extension EditorEnvironment {
   public static let failing = Self(
+    openAbout: { fatalError() },
     openHelp: { fatalError() },
     sort: .failing,
     sortScheduler: .failing,
@@ -85,6 +90,9 @@ extension EditorEnvironment {
 public let editorReducer = Reducer<EditorState, EditorAction, EditorEnvironment>
 { state, action, env in
   switch action {
+  case .openAbout:
+    return .fireAndForget { env.openAbout() }
+
   case .openHelp:
     return .fireAndForget { env.openHelp() }
 
@@ -156,11 +164,25 @@ public struct EditorView: View {
         .frame(minWidth: 500, minHeight: 500)
         #endif
         .toolbar {
-          ToolbarItemGroup(placement: toolbarItemPlacement) {
+          #if os(macOS)
+          ToolbarItemGroup(placement: .primaryAction) {
             progressView(viewStore)
             sortButton(viewStore)
             helpButton(viewStore)
           }
+          #elseif os(iOS)
+          ToolbarItemGroup(placement: .navigationBarTrailing) {
+            progressView(viewStore)
+
+            Menu {
+              sortButton(viewStore)
+              aboutButton(viewStore)
+              helpButton(viewStore)
+            } label: {
+              Label("Menu", systemImage: "gearshape")
+            }
+          }
+          #endif
         }
     }
   }
@@ -176,22 +198,6 @@ public struct EditorView: View {
     }
   }
 
-  private var toolbarItemPlacement: ToolbarItemPlacement {
-    #if os(macOS)
-    return .primaryAction
-    #elseif os(iOS)
-    return .navigationBarTrailing
-    #endif
-  }
-
-  private var toolbarLabelStyle: some LabelStyle {
-    #if os(macOS)
-    return .titleAndIcon
-    #elseif os(iOS)
-    return .iconOnly
-    #endif
-  }
-
   @ViewBuilder
   private func progressView(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
     if viewStore.isSorting {
@@ -204,16 +210,20 @@ public struct EditorView: View {
   private func sortButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
     Button(action: { viewStore.send(.sort) }) {
       Label("Sort Swift Imports", systemImage: "arrow.up.arrow.down")
-        .labelStyle(toolbarLabelStyle)
     }
     .disabled(viewStore.isSorting)
     .alert(store.scope(state: \.alert), dismiss: .dismissAlert)
   }
 
+  private func aboutButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
+    Button(action: { viewStore.send(.openAbout) }) {
+      Label("About the app", systemImage: "questionmark.circle")
+    }
+  }
+
   private func helpButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
     Button(action: { viewStore.send(.openHelp) }) {
       Label("Help", systemImage: "questionmark.circle")
-        .labelStyle(toolbarLabelStyle)
     }
   }
 }
