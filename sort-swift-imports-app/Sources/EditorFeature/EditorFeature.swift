@@ -45,6 +45,7 @@ extension EditorState {
 }
 
 public enum EditorAction: Equatable, BindableAction {
+  case openHelp
   case sort
   case didSort(Result<String, SortSwiftImports.Error>)
   case binding(BindingAction<EditorState>)
@@ -53,15 +54,18 @@ public enum EditorAction: Equatable, BindableAction {
 
 public struct EditorEnvironment {
   public init(
+    openHelp: @escaping () -> Void,
     sort: SortSwiftImports,
     sortScheduler: AnySchedulerOf<DispatchQueue>,
     mainScheduler: AnySchedulerOf<DispatchQueue>
   ) {
+    self.openHelp = openHelp
     self.sort = sort
     self.sortScheduler = sortScheduler
     self.mainScheduler = mainScheduler
   }
 
+  public var openHelp: () -> Void
   public var sort: SortSwiftImports
   public var sortScheduler: AnySchedulerOf<DispatchQueue>
   public var mainScheduler: AnySchedulerOf<DispatchQueue>
@@ -70,6 +74,7 @@ public struct EditorEnvironment {
 #if DEBUG
 extension EditorEnvironment {
   public static let failing = Self(
+    openHelp: { fatalError() },
     sort: .failing,
     sortScheduler: .failing,
     mainScheduler: .failing
@@ -80,6 +85,9 @@ extension EditorEnvironment {
 public let editorReducer = Reducer<EditorState, EditorAction, EditorEnvironment>
 { state, action, env in
   switch action {
+  case .openHelp:
+    return .fireAndForget { env.openHelp() }
+
   case .sort:
     guard state.isSorting == false else {
       return .none
@@ -162,10 +170,16 @@ public struct EditorView: View {
             }
 
             Button(action: { viewStore.send(.sort) }) {
-              Text("Sort Swift Imports")
+              Label("Sort Swift Imports", systemImage: "arrow.up.arrow.down")
+                .labelStyle(.titleAndIcon)
             }
             .disabled(viewStore.isSorting)
             .alert(store.scope(state: \.alert), dismiss: .dismissAlert)
+
+            Button(action: { viewStore.send(.openHelp) }) {
+              Label("Help", systemImage: "questionmark.circle")
+                .labelStyle(.titleAndIcon)
+            }
           }
         }
     }

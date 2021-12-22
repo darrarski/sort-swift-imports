@@ -4,6 +4,23 @@ import XCTest
 @testable import EditorFeature
 
 final class EditorFeatureTests: XCTestCase {
+  func testOpenHelp() {
+    var didOpenHelp = 0
+
+    var environment = EditorEnvironment.failing
+    environment.openHelp = { didOpenHelp += 1 }
+
+    let store = TestStore(
+      initialState: .init(),
+      reducer: editorReducer,
+      environment: environment
+    )
+
+    store.send(.openHelp)
+
+    XCTAssertEqual(didOpenHelp, 1)
+  }
+
   func testSorting() {
     let input = "input"
     let output = "output"
