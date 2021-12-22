@@ -2,7 +2,16 @@ import SwiftUI
 import AppIconCreator
 
 public struct AppIconView: View {
-  public init() {}
+  public enum Platform: Equatable {
+    case macOS
+    case iOS
+  }
+
+  public init(_ platform: Platform) {
+    self.platform = platform
+  }
+
+  var platform: Platform
 
   public var body: some View {
     GeometryReader { geometry in
@@ -21,16 +30,13 @@ public struct AppIconView: View {
           )
         )
         .background(Color.orange)
-        .clipShape(borderShape(iconSize: geometry.size))
-        .padding(geometry.size.width * 0.08)
+        .if(platform == .macOS) {
+          $0.clipShape(RoundedRectangle(
+            cornerRadius: geometry.size.width * 0.2,
+            style: .continuous
+          )).padding(geometry.size.width * 0.08)
+        }
     }
-  }
-
-  func borderShape(iconSize size: CGSize) -> some InsettableShape {
-    RoundedRectangle(
-      cornerRadius: size.width * 0.2,
-      style: .continuous
-    )
   }
 }
 
@@ -38,7 +44,13 @@ public struct AppIconView: View {
 struct AppIconView_Preivews: PreviewProvider {
   static var previews: some View {
     IconPreviews(
-      icon: AppIconView(),
+      icon: AppIconView(.iOS),
+      configs: .iOS,
+      clip: true
+    )
+
+    IconPreviews(
+      icon: AppIconView(.macOS),
       configs: .macOS,
       clip: false
     )

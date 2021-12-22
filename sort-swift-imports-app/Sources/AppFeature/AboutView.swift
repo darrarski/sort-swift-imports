@@ -6,7 +6,7 @@ struct AboutView: View {
 
   var body: some View {
     VStack {
-      AppIconView()
+      AppIconView(.macOS)
         .frame(width: 128, height: 128)
         .shadow(color: .black, radius: 1, x: 1, y: 1)
 

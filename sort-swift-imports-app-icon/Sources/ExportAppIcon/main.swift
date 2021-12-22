@@ -10,7 +10,7 @@ extension URL {
   }
 }
 
-let exportURL = URL(fileURLWithPath: #file)
+let macOSExportURL = URL(fileURLWithPath: #file)
   .deletingLastPathComponent()
   .deletingLastPathComponent()
   .deletingLastPathComponent()
@@ -21,5 +21,19 @@ let exportURL = URL(fileURLWithPath: #file)
   .appendingPathComponent("AppIcon.appiconset")
 
 [IconImage]
-  .images(for: AppIconView(), with: .macOS)
-  .forEach { $0.save(to: exportURL) }
+  .images(for: AppIconView(.macOS), with: .macOS)
+  .forEach { $0.save(to: macOSExportURL) }
+
+let iOSExportURL = URL(fileURLWithPath: #file)
+  .deletingLastPathComponent()
+  .deletingLastPathComponent()
+  .deletingLastPathComponent()
+  .deletingLastPathComponent()
+  .appendingPathComponent("Project")
+  .appendingPathComponent("SortSwiftImportsIOSApp")
+  .appendingPathComponent("Assets.xcassets")
+  .appendingPathComponent("AppIcon.appiconset")
+
+[IconImage]
+  .images(for: AppIconView(.iOS), with: .iOS)
+  .forEach { $0.save(to: iOSExportURL) }
