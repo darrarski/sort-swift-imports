@@ -55,6 +55,7 @@ struct App: SwiftUI.App {
           Text("\(appDelegate.appInfo.name) Help")
         }
       }
+      SidebarCommands()
     }
   }
 

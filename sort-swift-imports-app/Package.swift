@@ -4,6 +4,7 @@ import PackageDescription
 
 let package = Package(
   name: "sort-swift-imports-app",
+  defaultLocalization: "en",
   platforms: [
     .macOS(.v12),
     .iOS(.v15),
@@ -30,6 +31,8 @@ let package = Package(
     .target(name: "AppFeature", dependencies: [
       .target(name: "EditorFeature"),
       .product(name: "AppIcon", package: "sort-swift-imports-app-icon"),
+    ], resources: [
+      .process("Resources"),
     ]),
     .testTarget(name: "AppFeatureTests", dependencies: [
       .target(name: "AppFeature"),

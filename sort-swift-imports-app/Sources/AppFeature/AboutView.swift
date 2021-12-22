@@ -35,6 +35,9 @@ struct AboutView: View {
             #endif
         }
       }
+      .padding(.bottom)
+
+      AcknowledgmentsButton()
     }
     .multilineTextAlignment(.center)
     #if os(macOS)
