@@ -129,7 +129,6 @@ public let editorReducer = Reducer<EditorState, EditorAction, EditorEnvironment>
   }
 }
 .binding()
-.debug()
 
 public struct EditorView: View {
   public init(store: Store<EditorState, EditorAction>) {
