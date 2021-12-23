@@ -23,22 +23,31 @@ extension Acknowledgment {
 }
 
 struct AcknowledgmentsButton: View {
+  #if os(macOS)
+  @StateObject var acknowledgmentsWindow = WindowController()
+  #elseif os(iOS)
   @State var isPresentingAcknowledgments = false
+  #endif
 
   var body: some View {
-    Button(action: { isPresentingAcknowledgments.toggle() }) {
+    Button(action: openAcknowledgments) {
       Text("Acknowledgments")
     }
-    #if os(macOS)
-    .background(Window(
-      title: "Acknowledgments",
-      styleMask: [.titled, .closable, .resizable],
-      isPresented: $isPresentingAcknowledgments,
-      content: content
-    ))
-    #elseif os(iOS)
+    #if os(iOS)
     .buttonStyle(.borderedProminent)
     .sheet(isPresented: $isPresentingAcknowledgments, content: content)
+    #endif
+  }
+
+  func openAcknowledgments() {
+    #if os(macOS)
+    acknowledgmentsWindow.present(
+      title: "Acknowledgments",
+      styleMask: [.titled, .closable, .resizable],
+      content: content
+    )
+    #elseif os(iOS)
+    isPresentingAcknowledgments = true
     #endif
   }
 

@@ -3,40 +3,59 @@ import SwiftUI
 
 @main
 struct App: SwiftUI.App {
+  let appInfo = AppInfo(.main)
+
   #if os(macOS)
-  @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
+  let aboutWindow = WindowController()
+  let helpWindow = WindowController()
 
   var body: some Scene {
     WindowGroup {
       LazyView {
         AppView(
-          appInfo: appDelegate.appInfo,
-          openAbout: appDelegate.openAboutWindow,
-          openHelp: appDelegate.openHelpWindow
+          appInfo: appInfo,
+          openAbout: openAboutWindow,
+          openHelp: openHelpWindow
         )
       }
     }
     .commands {
       CommandGroup(replacing: .appInfo) {
-        Button(action: appDelegate.openAboutWindow) {
-          Text("About \(appDelegate.appInfo.name)")
+        Button(action: openAboutWindow) {
+          Text("About \(appInfo.name)")
         }
       }
       CommandGroup(replacing: .help) {
-        Button(action: appDelegate.openHelpWindow) {
-          Text("\(appDelegate.appInfo.name) Help")
+        Button(action: openHelpWindow) {
+          Text("\(appInfo.name) Help")
         }
       }
       SidebarCommands()
     }
   }
-  #elseif os(iOS)
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
+  func openAboutWindow() {
+    aboutWindow.present(
+      title: "About \(appInfo.name)",
+      styleMask: [.titled, .closable]
+    ) {
+      AboutView(appInfo: appInfo)
+    }
+  }
+
+  func openHelpWindow() {
+    helpWindow.present(
+      title: "\(appInfo.name) Help",
+      styleMask: [.titled, .closable],
+      content: HelpView.init
+    )
+  }
+
+  #elseif os(iOS)
   var body: some Scene {
     WindowGroup {
       LazyView {
-        AppView(appInfo: appDelegate.appInfo)
+        AppView(appInfo: appInfo)
       }
     }
   }
