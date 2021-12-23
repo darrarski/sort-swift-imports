@@ -1,14 +1,39 @@
 # Sort Swift Imports
 
 ![Swift 5.5](https://img.shields.io/badge/swift-5.5-orange.svg)
-![platform macOS](https://img.shields.io/badge/platform-macOS-blue.svg)
+![platform macOS iOS](https://img.shields.io/badge/platform-macOS_|_iOS-blue.svg)
 
 Sort `import` statements in Swift source code.
 
-- Swift Library
-- macOS app
-    - Xcode Source Editor Extension
-- iOS app
+### Swift Library
+
+Add as a dependency to your Swift Package and use in your projects:
+
+```swift
+import SortSwiftImports
+
+let sortSwiftImports: SortSwiftImports = .live
+let code: String = // swift source code
+let result = sortSwiftImports(in: code)
+switch result {
+case let .success(output):
+  print(output)
+case let .failure(error):
+  print(error)
+}
+```
+
+### macOS application
+
+|macOS|
+|:-:|
+|![macOS app screenshot light mode](Misc/Screenshots/macOS/macOS%201.png#gh-light-mode-only)![macOS app screenshot dark mode](Misc/Screenshots/macOS/macOS%202.png#gh-dark-mode-only)|
+
+### iOS application
+
+|iPhone|iPad|
+|:-:|:-:|
+|![iPhone app screenshot light mode](Misc/Screenshots/iPhone%205.5in/iPhone%205.5in%201.png#gh-light-mode-only)![iPhone app screenshot dark mode](Misc/Screenshots/iPhone%205.5in/iPhone%205.5in%202.png#gh-dark-mode-only)|![iPad app screenshot light mode](Misc/Screenshots/iPad%20Pro%2012.9in%202nd%20gen/iPad%20Pro%2012.9in%202nd%20gen%201.png#gh-light-mode-only)![iPad app screenshot dark mode](Misc/Screenshots/iPad%20Pro%2012.9in%202nd%20gen/iPad%20Pro%2012.9in%202nd%20gen%202.png#gh-dark-mode-only)|
 
 ## 🛠 Setup
 
