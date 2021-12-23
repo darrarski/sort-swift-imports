@@ -5,89 +5,40 @@ import SwiftUI
 struct App: SwiftUI.App {
   #if os(macOS)
   @NSApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-  #elseif os(iOS)
-  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
-  @State var isPresentingAbout = false
-  @State var isPresentingHelp = false
-  #endif
 
   var body: some Scene {
     WindowGroup {
       LazyView {
-        #if os(macOS)
-        editorView()
-        #elseif os(iOS)
-        NavigationView {
-          editorView()
-            .navigationTitle(appDelegate.appInfo.name)
-            .navigationBarTitleDisplayMode(.inline)
-        }
-        .navigationViewStyle(.stack)
-        .sheet(isPresented: $isPresentingAbout) {
-          NavigationView {
-            ScrollView(.vertical) {
-              AboutView(appInfo: appDelegate.appInfo)
-            }
-            .navigationTitle("About the app")
-            .navigationBarTitleDisplayMode(.inline)
-          }
-          .navigationViewStyle(.stack)
-        }
-        .sheet(isPresented: $isPresentingHelp) {
-          NavigationView {
-            ScrollView(.vertical) {
-              HelpView()
-            }
-            .navigationTitle("Help")
-            .navigationBarTitleDisplayMode(.inline)
-          }
-          .navigationViewStyle(.stack)
-        }
-        #endif
+        AppView(
+          appInfo: appDelegate.appInfo,
+          openAbout: appDelegate.openAboutWindow,
+          openHelp: appDelegate.openHelpWindow
+        )
       }
     }
     .commands {
       CommandGroup(replacing: .appInfo) {
-        Button(action: openAbout) {
+        Button(action: appDelegate.openAboutWindow) {
           Text("About \(appDelegate.appInfo.name)")
         }
       }
       CommandGroup(replacing: .help) {
-        Button(action: openHelp) {
+        Button(action: appDelegate.openHelpWindow) {
           Text("\(appDelegate.appInfo.name) Help")
         }
       }
       SidebarCommands()
     }
   }
+  #elseif os(iOS)
+  @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 
-  func editorView() -> some View {
-    EditorView(store: .init(
-      initialState: .init(),
-      reducer: editorReducer,
-      environment: .init(
-        openAbout: openAbout,
-        openHelp: openHelp,
-        sort: .live,
-        sortScheduler: DispatchQueue.global(qos: .userInitiated).eraseToAnyScheduler(),
-        mainScheduler: .main
-      )
-    ))
+  var body: some Scene {
+    WindowGroup {
+      LazyView {
+        AppView(appInfo: appDelegate.appInfo)
+      }
+    }
   }
-
-  func openAbout() {
-    #if os(macOS)
-    appDelegate.openAboutWindow()
-    #elseif os(iOS)
-    isPresentingAbout = true
-    #endif
-  }
-
-  func openHelp() {
-    #if os(macOS)
-    appDelegate.openHelpWindow()
-    #elseif os(iOS)
-    isPresentingHelp = true
-    #endif
-  }
+  #endif
 }
