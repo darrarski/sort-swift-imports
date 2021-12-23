@@ -25,11 +25,25 @@ case let .failure(error):
 
 ### macOS application
 
+<a href="https://apps.apple.com/app/sort-swift-imports/id1601715398">
+  <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="30%"/>
+</a>
+
+Native SwiftUI macOS application that you can use to sort imports in your Swift source code. Just paste your code and click "Sort Swift Imports" button.
+
+It also contains Xcode Source Editor extension, so you can sort your Swift imports directly from Xcode. Make sure you have enabled Sort Swift Imports Extension from System Preferences → Extensions → Xcode Source Editor.
+
 |macOS|
 |:-:|
 |![macOS app screenshot light mode](Misc/Screenshots/macOS/macOS%201.png#gh-light-mode-only)![macOS app screenshot dark mode](Misc/Screenshots/macOS/macOS%202.png#gh-dark-mode-only)|
 
 ### iOS application
+
+<a href="https://apps.apple.com/app/sort-swift-imports/id1601715398">
+  <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="30%"/>
+</a>
+
+Native SwiftUI iOS application that you can use to sort imports in your Swift source code. Just paste your code and tap ⚙️ → Sort Swift Imports.
 
 |iPhone|iPad|
 |:-:|:-:|
