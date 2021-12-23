@@ -3,11 +3,30 @@
 ![Swift 5.5](https://img.shields.io/badge/swift-5.5-orange.svg)
 ![platform macOS iOS](https://img.shields.io/badge/platform-macOS_|_iOS-blue.svg)
 
-Sort `import` statements in Swift source code.
+Sort `import` statements in your Swift source code.
 
-### Swift Library
+## 🏛 Swift Library
 
-Add as a dependency to your Swift Package and use in your projects:
+Add `sort-swift-imports` package dependency to your Swift Package:
+
+```swift
+.package(
+  name: "sort-swift-imports",
+  url: "https://github.com/darrarski/sort-swift-imports.git",
+  .upToNextMajor(from: "1.0.0")
+),
+```
+
+Add `SortSwiftImports` library as a dependency to your targets: 
+
+```swift
+.product(
+  name: "SortSwiftImports", 
+  package: "sort-swift-imports"
+),
+```
+
+Use `SortSwiftImports` from your code:
 
 ```swift
 import SortSwiftImports
@@ -23,39 +42,39 @@ case let .failure(error):
 }
 ```
 
-### macOS application
+## 🅰️ macOS application
 
 <a href="https://apps.apple.com/app/sort-swift-imports/id1601715398">
-  <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="30%"/>
+  <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="200"/>
 </a>
 
-Native SwiftUI macOS application that you can use to sort imports in your Swift source code. Just paste your code and click "Sort Swift Imports" button.
+Native **SwiftUI** macOS application that you can use to sort imports in your Swift source code. Just paste your code and click the `Sort Swift Imports` button.
 
-It also contains Xcode Source Editor extension, so you can sort your Swift imports directly from Xcode. Make sure you have enabled Sort Swift Imports Extension from System Preferences → Extensions → Xcode Source Editor.
+It also contains **Xcode Source Editor extension**so that you can sort your Swift imports directly from Xcode. Ensure you have enabled `Sort Swift Imports Extension` in `System Preferences` → `Extensions` → `Xcode Source Editor`.
 
 |macOS|
 |:-:|
 |![macOS app screenshot light mode](Misc/Screenshots/macOS/macOS%201.png#gh-light-mode-only)![macOS app screenshot dark mode](Misc/Screenshots/macOS/macOS%202.png#gh-dark-mode-only)|
 
-### iOS application
+## 🅰️ iOS application
 
 <a href="https://apps.apple.com/app/sort-swift-imports/id1601715398">
-  <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="30%"/>
+  <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="200"/>
 </a>
 
-Native SwiftUI iOS application that you can use to sort imports in your Swift source code. Just paste your code and tap ⚙️ → Sort Swift Imports.
+Native **SwiftUI** iOS application that you can use to sort imports in your Swift source code. Just paste your code and tap `⚙️` → `Sort Swift Imports`.
+
+On your iPad, you can use multiple windows of the app simultaneously.
 
 |iPhone|iPad|
 |:-:|:-:|
 |![iPhone app screenshot light mode](Misc/Screenshots/iPhone%205.5in/iPhone%205.5in%201.png#gh-light-mode-only)![iPhone app screenshot dark mode](Misc/Screenshots/iPhone%205.5in/iPhone%205.5in%202.png#gh-dark-mode-only)|![iPad app screenshot light mode](Misc/Screenshots/iPad%20Pro%2012.9in%202nd%20gen/iPad%20Pro%2012.9in%202nd%20gen%201.png#gh-light-mode-only)![iPad app screenshot dark mode](Misc/Screenshots/iPad%20Pro%2012.9in%202nd%20gen/iPad%20Pro%2012.9in%202nd%20gen%202.png#gh-dark-mode-only)|
 
-## 🛠 Setup
+## 🛠 Development
 
-- Xcode 13.2
+Open `SortSwiftImports.xcworkspace` in Xcode (⩾13.2) for development.
 
-Open `SortSwiftImports.xcworkspace` in Xcode for development.
-
-### Workspace structure
+### 🧰 Workspace structure
 
 ```
 SortSwiftImports (Xcode Workspace)
@@ -73,7 +92,7 @@ SortSwiftImports (Xcode Workspace)
      └─ SortSwiftImportsXcodeExtension (Xcode Source Editor Extension)
 ```
 
-### Build schemes
+### ▶️ Build schemes
 
 - Use `SortSwiftImportsMacApp` scheme to build and run the macOS application.
 - Use `SortSwiftImportsMacApp` scheme to run all tests on macOS.
@@ -84,6 +103,22 @@ SortSwiftImports (Xcode Workspace)
 - Use `ExportAppIcon` scheme for exporting the app icon into asset catalog (use macOS destination).
 
 Use other schemes for building and testing the libraries.
+
+### 🙋‍♂️ Contributing
+
+- All contributions are welcome!
+- Create a pull request containing your changes or bug fixes.
+- Make sure to add tests for the new/updated code.
+
+## ☕️ Do you like the project?
+
+<a href="https://www.buymeacoffee.com/darrarski" target="_blank">
+  <img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" align="right" height="60"/>
+</a>
+
+Consider supporting further development and buy me a coffee.
+
+&nbsp;
 
 ## 📄 License
 
