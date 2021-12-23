@@ -50,4 +50,4 @@ Use other schemes for building and testing the libraries.
 
 Copyright © 2021 Dariusz Rybicki Darrarski
 
-License: TBD
+License: [MIT](LICENSE)
