@@ -7,8 +7,9 @@ struct Acknowledgment: Identifiable, Equatable {
 
 extension Sequence where Element == Acknowledgment {
   static var all: [Acknowledgment] {[
-    .init(id: "swift-composable-architecture", title: "Swift Composable Architecture"),
     .init(id: "CodeEditor", title: "CodeEditor"),
+    .init(id: "sort-swift-imports", title: "Sort Swift Imports"),
+    .init(id: "swift-composable-architecture", title: "Swift Composable Architecture"),
     .init(id: "swiftui-app-icon-creator", title: "SwiftUI App Icon Creator"),
   ]}
 }
