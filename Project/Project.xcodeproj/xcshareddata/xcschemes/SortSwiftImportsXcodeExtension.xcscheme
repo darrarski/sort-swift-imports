@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3108B62C27720E540079405F"
-               BuildableName = "Sort Swift Imports Extension.appex"
+               BuildableName = "Sort Imports Extension.appex"
                BlueprintName = "SortSwiftImportsXcodeExtension"
                ReferencedContainer = "container:Project.xcodeproj">
             </BuildableReference>
@@ -30,7 +30,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3108B61327720A250079405F"
-               BuildableName = "Sort Swift Imports.app"
+               BuildableName = "Sort Imports.app"
                BlueprintName = "SortSwiftImportsMacApp"
                ReferencedContainer = "container:Project.xcodeproj">
             </BuildableReference>
@@ -62,7 +62,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3108B61327720A250079405F"
-            BuildableName = "Sort Swift Imports.app"
+            BuildableName = "Sort Imports.app"
             BlueprintName = "SortSwiftImportsMacApp"
             ReferencedContainer = "container:Project.xcodeproj">
          </BuildableReference>
@@ -81,7 +81,7 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "3108B61327720A250079405F"
-            BuildableName = "Sort Swift Imports.app"
+            BuildableName = "Sort Imports.app"
             BlueprintName = "SortSwiftImportsMacApp"
             ReferencedContainer = "container:Project.xcodeproj">
          </BuildableReference>

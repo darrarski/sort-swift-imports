@@ -1,4 +1,4 @@
-# Sort Swift Imports
+# Sort (Swift) Imports
 
 ![Swift 5.5](https://img.shields.io/badge/swift-5.5-orange.svg)
 ![platform macOS iOS](https://img.shields.io/badge/platform-macOS_|_iOS-blue.svg)
@@ -44,13 +44,13 @@ case let .failure(error):
 
 ## 🅰️ macOS application
 
-<a href="https://apps.apple.com/app/sort-swift-imports/id1601715398">
+<a href="https://apps.apple.com/app/sort-imports/id1601715398">
   <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="200"/>
 </a>
 
-Native **SwiftUI** macOS application that you can use to sort imports in your Swift source code. Just paste your code and click the `Sort Swift Imports` button.
+Native **SwiftUI** macOS application that you can use to sort imports in your Swift source code. Just paste your code and click the `Sort swift imports` button.
 
-It also contains **Xcode Source Editor extension**so that you can sort your Swift imports directly from Xcode. Ensure you have enabled `Sort Swift Imports Extension` in `System Preferences` → `Extensions` → `Xcode Source Editor`.
+It also contains **Xcode Source Editor extension**so that you can sort your Swift imports directly from Xcode. Ensure you have enabled `Sort Imports Extension` in `System Preferences` → `Extensions` → `Xcode Source Editor`.
 
 |macOS|
 |:-:|
@@ -58,11 +58,11 @@ It also contains **Xcode Source Editor extension**so that you can sort your Swif
 
 ## 🅰️ iOS application
 
-<a href="https://apps.apple.com/app/sort-swift-imports/id1601715398">
+<a href="https://apps.apple.com/app/sort-imports/id1601715398">
   <img src="Misc/Download_on_the_App_Store_badge.png" alt="Download on the App Store" align="right" width="200"/>
 </a>
 
-Native **SwiftUI** iOS application that you can use to sort imports in your Swift source code. Just paste your code and tap `⚙️` → `Sort Swift Imports`.
+Native **SwiftUI** iOS application that you can use to sort imports in your Swift source code. Just paste your code and tap `⚙️` → `Sort swift imports`.
 
 On your iPad, you can use multiple windows of the app simultaneously.
 

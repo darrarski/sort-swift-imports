@@ -208,7 +208,7 @@ public struct EditorView: View {
 
   private func sortButton(_ viewStore: ViewStore<ViewState, EditorAction>) -> some View {
     Button(action: { viewStore.send(.sort) }) {
-      Label("Sort Swift Imports", systemImage: "arrow.up.arrow.down")
+      Label("Sort swift imports", systemImage: "arrow.up.arrow.down")
         .labelStyle(.titleAndIcon)
     }
     .disabled(viewStore.isSorting)
