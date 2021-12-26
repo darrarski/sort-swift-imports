@@ -10,7 +10,7 @@
 		3108B61C27720A260079405F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3108B61B27720A260079405F /* Assets.xcassets */; };
 		3108B62F27720E540079405F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B62E27720E540079405F /* Cocoa.framework */; };
 		3108B63427720E540079405F /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3108B63327720E540079405F /* SourceEditorExtension.swift */; };
-		3108B63B27720E540079405F /* Sort Imports Extension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3108B62D27720E540079405F /* Sort Imports Extension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3108B63B27720E540079405F /* Sort Imports.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3108B62D27720E540079405F /* Sort Imports.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3108B64227720F410079405F /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B63027720E540079405F /* XcodeKit.framework */; };
 		3108B64327720F410079405F /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B63027720E540079405F /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3108B647277215D70079405F /* LocalizedErrorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3108B646277215D70079405F /* LocalizedErrorHelpers.swift */; };
@@ -37,7 +37,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				3108B63B27720E540079405F /* Sort Imports Extension.appex in Embed App Extensions */,
+				3108B63B27720E540079405F /* Sort Imports.appex in Embed App Extensions */,
 			);
 			name = "Embed App Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -59,7 +59,7 @@
 		3108B61427720A250079405F /* Sort Imports.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Sort Imports.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3108B61B27720A260079405F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3108B62027720A260079405F /* SortSwiftImportsMacApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SortSwiftImportsMacApp.entitlements; sourceTree = "<group>"; };
-		3108B62D27720E540079405F /* Sort Imports Extension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Sort Imports Extension.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3108B62D27720E540079405F /* Sort Imports.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = "Sort Imports.appex"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3108B62E27720E540079405F /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
 		3108B63027720E540079405F /* XcodeKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XcodeKit.framework; path = Library/Frameworks/XcodeKit.framework; sourceTree = DEVELOPER_DIR; };
 		3108B63327720E540079405F /* SourceEditorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SourceEditorExtension.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 			isa = PBXGroup;
 			children = (
 				3108B61427720A250079405F /* Sort Imports.app */,
-				3108B62D27720E540079405F /* Sort Imports Extension.appex */,
+				3108B62D27720E540079405F /* Sort Imports.appex */,
 				31A053572773588200101B68 /* Sort Imports.app */,
 			);
 			name = Products;
@@ -205,7 +205,7 @@
 				31ECF617277218E90055363F /* SortSwiftImports */,
 			);
 			productName = SortSwiftImportsExtension;
-			productReference = 3108B62D27720E540079405F /* Sort Imports Extension.appex */;
+			productReference = 3108B62D27720E540079405F /* Sort Imports.appex */;
 			productType = "com.apple.product-type.xcode-extension";
 		};
 		31A053562773588200101B68 /* SortSwiftImportsIOSApp */ = {
@@ -529,7 +529,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports.SortSwiftImportsXcodeExtension;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "Sort Imports Extension";
+				PRODUCT_NAME = "Sort Imports";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -554,7 +554,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = pl.darrarski.SortSwiftImports.SortSwiftImportsXcodeExtension;
 				PRODUCT_MODULE_NAME = "$(TARGET_NAME:c99extidentifier)";
-				PRODUCT_NAME = "Sort Imports Extension";
+				PRODUCT_NAME = "Sort Imports";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

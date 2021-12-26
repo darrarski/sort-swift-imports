@@ -16,7 +16,7 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "3108B62C27720E540079405F"
-               BuildableName = "Sort Imports Extension.appex"
+               BuildableName = "Sort Imports.appex"
                BlueprintName = "SortSwiftImportsXcodeExtension"
                ReferencedContainer = "container:Project.xcodeproj">
             </BuildableReference>

@@ -50,7 +50,7 @@ case let .failure(error):
 
 Native **SwiftUI** macOS application that you can use to sort imports in your Swift source code. Just paste your code and click the `Sort swift imports` button.
 
-It also contains **Xcode Source Editor extension**so that you can sort your Swift imports directly from Xcode. Ensure you have enabled `Sort Imports Extension` in `System Preferences` → `Extensions` → `Xcode Source Editor`.
+It also contains **Xcode Source Editor extension**so that you can sort your Swift imports directly from Xcode. Ensure you have enabled `Sort Imports` extension in `System Preferences` → `Extensions` → `Xcode Source Editor`.
 
 |macOS|
 |:-:|

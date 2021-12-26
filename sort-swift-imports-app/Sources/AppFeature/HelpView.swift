@@ -7,7 +7,7 @@ struct HelpView: View {
         .padding(.bottom)
 
       #if os(macOS)
-      Text("You can also sort imports directly from Xcode, using included Xcode Source Editor Extension. Make sure you have enabled Sort Imports Extension in System Preferences → Extensions. If you can't see the extension in Xcode's Editor menu, check out this article:")
+      Text("You can also sort imports directly from Xcode, using included Xcode Source Editor Extension. Make sure you have enabled Sort Imports extension in System Preferences → Extensions. If you can't see the extension in Xcode's Editor menu, check out this article:")
 
       Link(destination: URL(string: "https://nshipster.com/xcode-source-extensions/#using-pluginkit")!) {
         Label(
