@@ -54,7 +54,7 @@ It also contains **Xcode Source Editor extension**so that you can sort your Swif
 
 |macOS|
 |:-:|
-|![macOS app screenshot light mode](Misc/Screenshots/macOS/macOS%201.png#gh-light-mode-only)![macOS app screenshot dark mode](Misc/Screenshots/macOS/macOS%202.png#gh-dark-mode-only)|
+|![macOS app screenshot light mode](Misc/Screenshots/macOS/macOS-light-1.png#gh-light-mode-only)![macOS app screenshot dark mode](Misc/Screenshots/macOS/macOS-dark-1.png#gh-dark-mode-only)|
 
 ## 🅰️ iOS application
 
@@ -68,7 +68,7 @@ On your iPad, you can use multiple windows of the app simultaneously.
 
 |iPhone|iPad|
 |:-:|:-:|
-|![iPhone app screenshot light mode](Misc/Screenshots/iPhone%205.5in/iPhone%205.5in%201.png#gh-light-mode-only)![iPhone app screenshot dark mode](Misc/Screenshots/iPhone%205.5in/iPhone%205.5in%202.png#gh-dark-mode-only)|![iPad app screenshot light mode](Misc/Screenshots/iPad%20Pro%2012.9in%202nd%20gen/iPad%20Pro%2012.9in%202nd%20gen%201.png#gh-light-mode-only)![iPad app screenshot dark mode](Misc/Screenshots/iPad%20Pro%2012.9in%202nd%20gen/iPad%20Pro%2012.9in%202nd%20gen%202.png#gh-dark-mode-only)|
+|![iPhone app screenshot light mode](Misc/Screenshots/iPhone-5.5in/iPhone-5.5in-light-1.png#gh-light-mode-only)![iPhone app screenshot dark mode](Misc/Screenshots/iPhone-5.5in/iPhone-5.5in-dark-1.png#gh-dark-mode-only)|![iPad app screenshot light mode](Misc/Screenshots/iPad-Pro-12.9in-2nd-gen/iPad-Pro-12.9in-2nd-gen-light-1.png#gh-light-mode-only)![iPad app screenshot dark mode](Misc/Screenshots/iPad-Pro-12.9in-2nd-gen/iPad-Pro-12.9in-2nd-gen-dark-1.png#gh-dark-mode-only)|
 
 ## 🛠 Development
 
