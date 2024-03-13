@@ -10,7 +10,7 @@
 		3108B61C27720A260079405F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3108B61B27720A260079405F /* Assets.xcassets */; };
 		3108B62F27720E540079405F /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B62E27720E540079405F /* Cocoa.framework */; };
 		3108B63427720E540079405F /* SourceEditorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3108B63327720E540079405F /* SourceEditorExtension.swift */; };
-		3108B63B27720E540079405F /* Sort Imports.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 3108B62D27720E540079405F /* Sort Imports.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		3108B63B27720E540079405F /* Sort Imports.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = 3108B62D27720E540079405F /* Sort Imports.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		3108B64227720F410079405F /* XcodeKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B63027720E540079405F /* XcodeKit.framework */; };
 		3108B64327720F410079405F /* XcodeKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 3108B63027720E540079405F /* XcodeKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		3108B647277215D70079405F /* LocalizedErrorHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3108B646277215D70079405F /* LocalizedErrorHelpers.swift */; };
@@ -31,15 +31,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		3108B63F27720E540079405F /* Embed App Extensions */ = {
+		3108B63F27720E540079405F /* Embed Foundation Extensions */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 13;
 			files = (
-				3108B63B27720E540079405F /* Sort Imports.appex in Embed App Extensions */,
+				3108B63B27720E540079405F /* Sort Imports.appex in Embed Foundation Extensions */,
 			);
-			name = "Embed App Extensions";
+			name = "Embed Foundation Extensions";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3108B64427720F410079405F /* Embed Frameworks */ = {
@@ -172,7 +172,7 @@
 				3108B61027720A250079405F /* Sources */,
 				3108B61127720A250079405F /* Frameworks */,
 				3108B61227720A250079405F /* Resources */,
-				3108B63F27720E540079405F /* Embed App Extensions */,
+				3108B63F27720E540079405F /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
@@ -236,7 +236,7 @@
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1320;
-				LastUpgradeCheck = 1320;
+				LastUpgradeCheck = 1530;
 				TargetAttributes = {
 					3108B61327720A250079405F = {
 						CreatedOnToolsVersion = 13.2.1;
@@ -366,9 +366,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -431,9 +433,11 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				CURRENT_PROJECT_VERSION = 6;
+				DEAD_CODE_STRIPPING = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -464,6 +468,7 @@
 				CODE_SIGN_ENTITLEMENTS = SortSwiftImportsMacApp/SortSwiftImportsMacApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = P38XW29864;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -493,6 +498,7 @@
 				CODE_SIGN_ENTITLEMENTS = SortSwiftImportsMacApp/SortSwiftImportsMacApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = P38XW29864;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -517,6 +523,7 @@
 				CODE_SIGN_ENTITLEMENTS = SortSwiftImportsXcodeExtension/SortSwiftImportsXcodeExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = P38XW29864;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -542,6 +549,7 @@
 				CODE_SIGN_ENTITLEMENTS = SortSwiftImportsXcodeExtension/SortSwiftImportsXcodeExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
+				DEAD_CODE_STRIPPING = YES;
 				DEVELOPMENT_TEAM = P38XW29864;
 				ENABLE_HARDENED_RUNTIME = YES;
 				GENERATE_INFOPLIST_FILE = YES;
