@@ -1,6 +1,6 @@
 # Sort (Swift) Imports
 
-![Swift 5.5](https://img.shields.io/badge/swift-5.5-orange.svg)
+![Swift 5.10](https://img.shields.io/badge/swift-5.10-orange.svg)
 ![platform macOS iOS](https://img.shields.io/badge/platform-macOS_|_iOS-blue.svg)
 
 Sort `import` statements in your Swift source code.
@@ -72,7 +72,7 @@ On your iPad, you can use multiple windows of the app simultaneously.
 
 ## 🛠 Development
 
-Open `SortSwiftImports.xcworkspace` in Xcode (⩾13.2) for development.
+Open `SortSwiftImports.xcworkspace` in Xcode (⩾15.3) for development.
 
 ### 🧰 Workspace structure
 
