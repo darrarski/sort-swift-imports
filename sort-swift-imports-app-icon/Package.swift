@@ -4,8 +4,8 @@ import PackageDescription
 let package = Package(
   name: "sort-swift-imports-app-icon",
   platforms: [
-    .macOS(.v13),
-    .iOS(.v15),
+    .macOS(.v14),
+    .iOS(.v17),
   ],
   products: [
     .library(name: "AppIcon", targets: ["AppIcon"]),

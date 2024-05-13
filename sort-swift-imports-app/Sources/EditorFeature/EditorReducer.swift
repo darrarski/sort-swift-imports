@@ -1,3 +1,4 @@
+import AppShared
 import ComposableArchitecture
 
 @Reducer
@@ -22,11 +23,18 @@ public struct EditorReducer: Sendable {
   public enum Action: Sendable, BindableAction, ViewAction {
     case alert(PresentationAction<Alert>)
     case binding(BindingAction<State>)
+    case delegate(Delegate)
     case didSort(Result<String, any Error>)
     case view(View)
 
     @CasePathable
     public enum Alert: Sendable, Equatable {}
+
+    @CasePathable
+    public enum Delegate: Sendable {
+      case openAbout
+      case openHelp
+    }
 
     @CasePathable
     public enum View: Sendable {
@@ -50,6 +58,9 @@ public struct EditorReducer: Sendable {
       case .binding:
         return .none
 
+      case .delegate:
+        return .none
+
       case .didSort(let result):
         state.isSorting = false
         switch result {
@@ -68,10 +79,10 @@ public struct EditorReducer: Sendable {
       case .view(let action):
         switch action {
         case .aboutTapped:
-          return .run { _ in env.openAbout() }
+          return .send(.delegate(.openAbout))
 
         case .helpTapped:
-          return .run { _ in env.openHelp() }
+          return .send(.delegate(.openHelp))
 
         case .sortImportsTapped:
           guard !state.isSorting else { return .none }

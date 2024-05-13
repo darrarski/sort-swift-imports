@@ -1,6 +1,7 @@
-@preconcurrency import CodeEditor
+import AppShared
 import ComposableArchitecture
 import SwiftUI
+@preconcurrency import CodeEditor
 
 @ViewAction(for: EditorReducer.self)
 public struct EditorView: View {

@@ -1,3 +1,4 @@
+import AppShared
 import ComposableArchitecture
 import XCTest
 @testable import EditorFeature
@@ -86,35 +87,25 @@ final class EditorReducerTests: XCTestCase {
 
   @MainActor
   func testOpenAbout() async {
-    let didOpenAbout = LockIsolated(0)
     let store = TestStore(
       initialState: EditorReducer.State()
     ) {
       EditorReducer()
-    } withDependencies: {
-      $0[EditorEnvironment.self].openAbout = { @Sendable in
-        didOpenAbout.withValue { $0 += 1 }
-      }
     }
 
     await store.send(.view(.aboutTapped))
-    XCTAssertEqual(didOpenAbout.value, 1)
+    await store.receive(\.delegate.openAbout)
   }
 
   @MainActor
   func testOpenHelp() async {
-    let didOpenHelp = LockIsolated(0)
     let store = TestStore(
       initialState: EditorReducer.State()
     ) {
       EditorReducer()
-    } withDependencies: {
-      $0[EditorEnvironment.self].openHelp = { @Sendable in
-        didOpenHelp.withValue { $0 += 1 }
-      }
     }
 
     await store.send(.view(.helpTapped))
-    XCTAssertEqual(didOpenHelp.value, 1)
+    await store.receive(\.delegate.openHelp)
   }
 }

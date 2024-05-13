@@ -1,63 +1,64 @@
+import AboutFeature
+import AppShared
 import ComposableArchitecture
 import EditorFeature
+import HelpFeature
 import SwiftUI
 
 struct AppView: View {
-  var appInfo: AppInfo
-  #if os(macOS)
-  var openAbout: () -> Void
-  var openHelp: () -> Void
-  #elseif os(iOS)
-  @State var isPresentingAbout = false
-  @State var isPresentingHelp = false
-  func openAbout() { isPresentingAbout = true }
-  func openHelp() { isPresentingHelp = true }
-  #endif
+  @State var store: StoreOf<AppReducer>
 
   var body: some View {
-    #if os(macOS)
-    editorView()
-    #elseif os(iOS)
-    NavigationView {
-      editorView()
-        .navigationTitle(appInfo.name)
-        .navigationBarTitleDisplayMode(.inline)
-    }
-    .navigationViewStyle(.stack)
-    .sheet(isPresented: $isPresentingAbout) {
-      NavigationView {
-        ScrollView(.vertical) {
-          AboutView(appInfo: appInfo)
-        }
-        .navigationTitle("About the app")
-        .navigationBarTitleDisplayMode(.inline)
-      }
-      .navigationViewStyle(.stack)
-    }
-    .sheet(isPresented: $isPresentingHelp) {
-      NavigationView {
-        ScrollView(.vertical) {
-          HelpView()
-        }
-        .navigationTitle("Help")
-        .navigationBarTitleDisplayMode(.inline)
-      }
-      .navigationViewStyle(.stack)
-    }
-    #endif
-  }
-
-  func editorView() -> some View {
-    EditorView(store: .init(
-      initialState: .init(),
-      reducer: editorReducer,
-      environment: .init(
-        openAbout: openAbout,
-        openHelp: openHelp,
-        sort: .live,
-        sortScheduler: DispatchQueue.global(qos: .userInitiated).eraseToAnyScheduler(),
-        mainScheduler: .main
+    NavigationStack {
+      EditorView(
+        store: store.scope(
+          state: \.editor,
+          action: \.editor
+        )
       )
-    ))
+    }
+#if os(iOS)
+    .sheet(
+      item: $store.scope(
+        state: \.destination?.about,
+        action: \.destination.about
+      ),
+      content: { store in
+        NavigationStack {
+          ScrollView {
+            AboutView(store: store)
+          }
+          .navigationTitle("About the app")
+          .navigationBarTitleDisplayMode(.inline)
+        }
+      }
+    )
+    .sheet(
+      item: $store.scope(
+        state: \.destination?.help,
+        action: \.destination.help
+      ),
+      content: { store in
+        NavigationStack {
+          ScrollView {
+            HelpView(store: store)
+          }
+          .navigationTitle("Help")
+          .navigationBarTitleDisplayMode(.inline)
+        }
+      }
+    )
+#endif
   }
+}
+
+#Preview {
+  AppView(
+    store: Store(
+      initialState: AppReducer.State()
+    ) {
+      AppReducer()
+        ._printChanges()
+    }
+  )
 }

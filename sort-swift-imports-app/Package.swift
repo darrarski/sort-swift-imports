@@ -9,8 +9,12 @@ let package = Package(
     .iOS(.v17),
   ],
   products: [
+    .library(name: "AboutFeature", targets: ["AboutFeature"]),
+    .library(name: "AcknowledgmentsFeature", targets: ["AcknowledgmentsFeature"]),
     .library(name: "AppFeature", targets: ["AppFeature"]),
+    .library(name: "AppShared", targets: ["AppShared"]),
     .library(name: "EditorFeature", targets: ["EditorFeature"]),
+    .library(name: "HelpFeature", targets: ["HelpFeature"]),
   ],
   dependencies: [
     .package(name: "sort-swift-imports", path: "../"),
@@ -20,13 +24,42 @@ let package = Package(
   ],
   targets: [
     .target(
+      name: "AboutFeature",
+      dependencies: [
+        .target(name: "AcknowledgmentsFeature"),
+        .target(name: "AppShared"),
+        .product(name: "AppIcon", package: "sort-swift-imports-app-icon"),
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ]
+    ),
+    .testTarget(
+      name: "AboutFeatureTests",
+      dependencies: [
+        .target(name: "AboutFeature"),
+      ]
+    ),
+    .target(
+        name: "AcknowledgmentsFeature",
+        dependencies: [
+          .target(name: "AppShared"),
+          .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        ]
+      ),
+    .testTarget(
+      name: "AcknowledgmentsFeatureTests",
+      dependencies: [
+        .target(name: "AcknowledgmentsFeature"),
+      ]
+    ),
+    .target(
       name: "AppFeature",
       dependencies: [
+        .target(name: "AboutFeature"),
+        .target(name: "AcknowledgmentsFeature"),
+        .target(name: "AppShared"),
         .target(name: "EditorFeature"),
-        .product(name: "AppIcon", package: "sort-swift-imports-app-icon"),
-      ],
-      resources: [
-        .process("Resources"),
+        .target(name: "HelpFeature"),
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
       ]
     ),
     .testTarget(
@@ -36,16 +69,46 @@ let package = Package(
       ]
     ),
     .target(
+      name: "AppShared",
+      dependencies: [
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ],
+      resources: [
+        .process("Resources"),
+      ]
+    ),
+    .testTarget(
+      name: "AppSharedTests",
+      dependencies: [
+        .target(name: "AppShared"),
+      ]
+    ),
+    .target(
       name: "EditorFeature",
       dependencies: [
+        .target(name: "AppShared"),
         .product(name: "CodeEditor", package: "CodeEditor"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+        .product(name: "SortSwiftImports", package: "sort-swift-imports"),
       ]
     ),
     .testTarget(
       name: "EditorFeatureTests",
       dependencies: [
         .target(name: "EditorFeature"),
+      ]
+    ),
+    .target(
+      name: "HelpFeature",
+      dependencies: [
+        .target(name: "AppShared"),
+        .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
+      ]
+    ),
+    .testTarget(
+      name: "HelpFeatureTests",
+      dependencies: [
+        .target(name: "HelpFeature"),
       ]
     ),
   ]
