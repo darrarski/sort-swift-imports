@@ -40,7 +40,6 @@ let package = Package(
       dependencies: [
         .product(name: "CodeEditor", package: "CodeEditor"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
-        .product(name: "SortSwiftImports", package: "sort-swift-imports"),
       ]
     ),
     .testTarget(
