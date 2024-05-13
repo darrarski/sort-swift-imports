@@ -28,6 +28,7 @@ extension Array<Acknowledgment> {
       Acknowledgment(id: "sort-swift-imports", title: "Sort Swift Imports"),
       Acknowledgment(id: "swift-composable-architecture", title: "Swift Composable Architecture"),
       Acknowledgment(id: "swiftui-app-icon-creator", title: "SwiftUI App Icon Creator"),
+      Acknowledgment(id: "swiftui-introspect", title: "SwiftUI Introspect"),
     ]
   }
 }

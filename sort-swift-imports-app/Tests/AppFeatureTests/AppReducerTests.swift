@@ -10,13 +10,17 @@ final class AppReducerTests: XCTestCase {
   @MainActor
   func testEditorOpenAbout() async {
     let store = TestStore(
-      initialState: AppReducer.State()
+      initialState: AppReducer.State(
+        appInfo: .stub
+      )
     ) {
       AppReducer()
     }
 
     await store.send(.editor(.delegate(.openAbout))) {
-      $0.destination = .about(AboutReducer.State())
+      $0.destination = .about(AboutReducer.State(
+        appInfo: .stub
+      ))
     }
     await store.send(.destination(.dismiss)) {
       $0.destination = nil
@@ -27,7 +31,9 @@ final class AppReducerTests: XCTestCase {
   func testEditorOpenAbout() async {
     let didOpenWindow = LockIsolated<[String]>([])
     let store = TestStore(
-      initialState: AppReducer.State()
+      initialState: AppReducer.State(
+        appInfo: .stub
+      )
     ) {
       AppReducer()
     } withDependencies: {
@@ -45,7 +51,9 @@ final class AppReducerTests: XCTestCase {
   @MainActor
   func testEditorOpenHelp() async {
     let store = TestStore(
-      initialState: AppReducer.State()
+      initialState: AppReducer.State(
+        appInfo: .stub
+      )
     ) {
       AppReducer()
     }
@@ -62,7 +70,9 @@ final class AppReducerTests: XCTestCase {
   func testEditorOpenHelp() async {
     let didOpenWindow = LockIsolated<[String]>([])
     let store = TestStore(
-      initialState: AppReducer.State()
+      initialState: AppReducer.State(
+        appInfo: .stub
+      )
     ) {
       AppReducer()
     } withDependencies: {

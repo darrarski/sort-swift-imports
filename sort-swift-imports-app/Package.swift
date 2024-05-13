@@ -21,6 +21,7 @@ let package = Package(
     .package(name: "sort-swift-imports-app-icon", path: "../sort-swift-imports-app-icon"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.10.4"),
     .package(url: "https://github.com/ZeeZide/CodeEditor.git", from: "1.2.4"),
+    .package(url: "https://github.com/siteline/swiftui-introspect.git", from: "1.1.4"),
   ],
   targets: [
     .target(
@@ -90,6 +91,7 @@ let package = Package(
         .product(name: "CodeEditor", package: "CodeEditor"),
         .product(name: "ComposableArchitecture", package: "swift-composable-architecture"),
         .product(name: "SortSwiftImports", package: "sort-swift-imports"),
+        .product(name: "SwiftUIIntrospect", package: "swiftui-introspect"),
       ]
     ),
     .testTarget(

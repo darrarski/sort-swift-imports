@@ -8,7 +8,18 @@ import HelpFeature
 struct AppReducer: Sendable {
   @ObservableState
   struct State: Sendable, Equatable {
-    var editor = EditorReducer.State()
+    init(
+      appInfo: AppInfo,
+      editor: EditorReducer.State = EditorReducer.State(),
+      destination: AppReducer.Destination.State? = nil
+    ) {
+      self.appInfo = appInfo
+      self.editor = editor
+      self.destination = destination
+    }
+    
+    var appInfo: AppInfo
+    var editor: EditorReducer.State
     @Presents var destination: Destination.State?
   }
 
@@ -38,7 +49,7 @@ struct AppReducer: Sendable {
         switch action {
         case .openAbout:
 #if os(iOS)
-          state.destination = .about(AboutReducer.State())
+          state.destination = .about(AboutReducer.State(appInfo: state.appInfo))
           return .none
 #elseif os(macOS)
           return .run { _ in

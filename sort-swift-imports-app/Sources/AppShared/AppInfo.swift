@@ -20,19 +20,17 @@ public struct AppInfo: Sendable, Equatable {
 }
 
 extension AppInfo {
-  public init(_ bundle: Bundle) {
-    name = bundle.infoDictionary?["CFBundleName"] as? String ?? ""
-    version = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
-    build = bundle.infoDictionary?["CFBundleVersion"] as? String ?? ""
-    copyright = bundle.infoDictionary?["NSHumanReadableCopyright"] as? String ?? ""
-  }
-}
-
-extension AppInfo {
   public static let stub = AppInfo(
     name: "App Name",
     version: "1.2.3",
     build: "456",
     copyright: "Copyright © 2024 Company Name. All rights reserved."
   )
+
+  public init(bundle: Bundle) {
+    name = bundle.infoDictionary?["CFBundleName"] as? String ?? ""
+    version = bundle.infoDictionary?["CFBundleShortVersionString"] as? String ?? ""
+    build = bundle.infoDictionary?["CFBundleVersion"] as? String ?? ""
+    copyright = bundle.infoDictionary?["NSHumanReadableCopyright"] as? String ?? ""
+  }
 }

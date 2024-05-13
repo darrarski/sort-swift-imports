@@ -9,7 +9,9 @@ final class AboutReducerTests: XCTestCase {
   @MainActor
   func testOpenAcknowledgments() async {
     let store = TestStore(
-      initialState: AboutReducer.State()
+      initialState: AboutReducer.State(
+        appInfo: .stub
+      )
     ) {
       AboutReducer()
     }
@@ -26,7 +28,9 @@ final class AboutReducerTests: XCTestCase {
   func testOpenAcknowledgments() async {
     let didOpenWindow = LockIsolated<[String]>([])
     let store = TestStore(
-      initialState: AboutReducer.State()
+      initialState: AboutReducer.State(
+        appInfo: .stub
+      )
     ) {
       AboutReducer()
     } withDependencies: {

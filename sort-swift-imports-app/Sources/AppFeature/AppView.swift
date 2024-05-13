@@ -16,6 +16,10 @@ struct AppView: View {
           action: \.editor
         )
       )
+      .navigationTitle(store.appInfo.name)
+#if os(iOS)
+      .navigationBarTitleDisplayMode(.inline)
+#endif
     }
 #if os(iOS)
     .sheet(
@@ -55,7 +59,9 @@ struct AppView: View {
 #Preview {
   AppView(
     store: Store(
-      initialState: AppReducer.State()
+      initialState: AppReducer.State(
+        appInfo: .stub
+      )
     ) {
       AppReducer()
         ._printChanges()
