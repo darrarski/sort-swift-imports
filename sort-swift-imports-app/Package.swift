@@ -15,8 +15,8 @@ let package = Package(
   dependencies: [
     .package(name: "sort-swift-imports", path: "../"),
     .package(name: "sort-swift-imports-app-icon", path: "../sort-swift-imports-app-icon"),
-    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "0.31.0"),
-    .package(url: "https://github.com/darrarski/CodeEditor.git", branch: "main"),
+    .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.10.4"),
+    .package(url: "https://github.com/darrarski/CodeEditor.git", revision: "7ca0e4b"),
   ],
   targets: [
     .target(
