@@ -2,6 +2,7 @@ import AppShared
 import CodeEditor
 import ComposableArchitecture
 import SwiftUI
+import SwiftUIIntrospect
 
 @ViewAction(for: EditorReducer.self)
 public struct EditorView: View {
@@ -18,6 +19,17 @@ public struct EditorView: View {
       language: .swift,
       theme: editorTheme
     )
+#if os(iOS)
+    .introspect(.scrollView, on: .iOS(.v17)) { scrollView in
+      scrollView.bounces = true
+      scrollView.alwaysBounceVertical = true
+      scrollView.keyboardDismissMode = .interactive
+      scrollView.backgroundColor = .clear
+      scrollView.clipsToBounds = false
+    }
+    .ignoresSafeArea(.container, edges: .vertical)
+    .toolbarBackground(.visible, for: .navigationBar)
+#endif
     .disabled(store.isSorting)
 #if os(macOS)
     .frame(minWidth: 500, minHeight: 500)
