@@ -20,7 +20,7 @@ let package = Package(
     .package(name: "sort-swift-imports", path: "../"),
     .package(name: "sort-swift-imports-app-icon", path: "../sort-swift-imports-app-icon"),
     .package(url: "https://github.com/pointfreeco/swift-composable-architecture.git", from: "1.10.4"),
-    .package(url: "https://github.com/darrarski/CodeEditor.git", revision: "7ca0e4b"),
+    .package(url: "https://github.com/ZeeZide/CodeEditor.git", from: "1.2.4"),
   ],
   targets: [
     .target(
