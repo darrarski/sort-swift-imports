@@ -11,9 +11,8 @@ Add `sort-swift-imports` package dependency to your Swift Package:
 
 ```swift
 .package(
-  name: "sort-swift-imports",
   url: "https://github.com/darrarski/sort-swift-imports.git",
-  .upToNextMajor(from: "1.0.0")
+  from: "1.0.0"
 ),
 ```
 
@@ -72,23 +71,22 @@ On your iPad, you can use multiple windows of the app simultaneously.
 
 ## 🛠 Development
 
-Open `SortSwiftImports.xcworkspace` in Xcode (⩾15.3) for development.
+Open `SortSwiftImports.xcworkspace` in Xcode (⩾15.4) for development.
 
 ### 🧰 Workspace structure
 
 ```
 SortSwiftImports (Xcode Workspace)
  ├─ sort-swift-imports (Swift Package)
- |   └─ SortSwiftImports (Library)
+ │   └─ SortSwiftImports (Library)
  ├─ sort-swift-imports-app (Swift Package)
- |   ├─ AppFeature (Library)
- |   └─ EditorFeature (Library)
+ │   ├─ AppFeature (Library)
+ │   └─ EditorFeature (Library)
  ├─ sort-swift-imports-app-icon (Swift Package)
- |   ├─ AppIcon (Library)
- |   └─ AppIconExport (macOS executable)
+ │   ├─ AppIcon (Library)
+ │   └─ AppIconExport (macOS executable)
  └─ Project (Xcode Project)
-     ├─ SortSwiftImportsMacApp (macOS Application)
-     ├─ SortSwiftImportsIOSApp (iOS Application)
+     ├─ SortSwiftImportsApp (iOS and macOS Application)
      └─ SortSwiftImportsXcodeExtension (Xcode Source Editor Extension)
 ```
 
