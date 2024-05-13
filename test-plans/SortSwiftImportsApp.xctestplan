@@ -26,6 +26,20 @@
     {
       "target" : {
         "containerPath" : "container:..\/sort-swift-imports-app",
+        "identifier" : "AboutFeatureTests",
+        "name" : "AboutFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/sort-swift-imports-app",
+        "identifier" : "AcknowledgmentsFeatureTests",
+        "name" : "AcknowledgmentsFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/sort-swift-imports-app",
         "identifier" : "AppFeatureTests",
         "name" : "AppFeatureTests"
       }
@@ -33,8 +47,22 @@
     {
       "target" : {
         "containerPath" : "container:..\/sort-swift-imports-app",
+        "identifier" : "AppSharedTests",
+        "name" : "AppSharedTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/sort-swift-imports-app",
         "identifier" : "EditorFeatureTests",
         "name" : "EditorFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/sort-swift-imports-app",
+        "identifier" : "HelpFeatureTests",
+        "name" : "HelpFeatureTests"
       }
     }
   ],

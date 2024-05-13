@@ -1,63 +1,83 @@
+import AboutFeature
+import AcknowledgmentsFeature
+import AppShared
+import ComposableArchitecture
 import EditorFeature
+import HelpFeature
 import SwiftUI
 
 @main
 struct App: SwiftUI.App {
   let appInfo = AppInfo(.main)
-
-  #if os(macOS)
-  let aboutWindow = WindowController()
-  let helpWindow = WindowController()
+  @Dependency(\.openWindow) var openWindow
 
   var body: some Scene {
+#if os(iOS)
     WindowGroup {
-      LazyView {
-        AppView(
-          appInfo: appInfo,
-          openAbout: openAboutWindow,
-          openHelp: openHelpWindow
-        )
-      }
+      AppView(
+        store: Store(
+          initialState: AppReducer.State()
+        ) {
+          AppReducer()
+        }
+      )
     }
+#elseif os(macOS)
+    Window(appInfo.name, id: AppWindowID.main.rawValue) {
+      AppView(
+        store: Store(
+          initialState: AppReducer.State()
+        ) {
+          AppReducer()
+        }
+      )
+    }
+    .windowResizability(.contentMinSize)
     .commands {
       CommandGroup(replacing: .appInfo) {
-        Button(action: openAboutWindow) {
-          Text("About \(appInfo.name)")
+        Button("About \(appInfo.name)") {
+          openWindow(id: AppWindowID.about.rawValue)
         }
       }
       CommandGroup(replacing: .help) {
-        Button(action: openHelpWindow) {
-          Text("\(appInfo.name) Help")
+        Button("\(appInfo.name) Help") {
+          openWindow(id: AppWindowID.help.rawValue)
         }
       }
-      SidebarCommands()
     }
-  }
 
-  func openAboutWindow() {
-    aboutWindow.present(
-      title: "About \(appInfo.name)",
-      styleMask: [.titled, .closable]
-    ) {
-      AboutView(appInfo: appInfo)
+    Window(Text("About \(appInfo.name)"), id: AppWindowID.about.rawValue) {
+      AboutView(
+        store: Store(
+          initialState: AboutReducer.State()
+        ) {
+          AboutReducer()
+        }
+      )
     }
-  }
+    .windowResizability(.contentMinSize)
 
-  func openHelpWindow() {
-    helpWindow.present(
-      title: "\(appInfo.name) Help",
-      styleMask: [.titled, .closable],
-      content: HelpView.init
-    )
-  }
-
-  #elseif os(iOS)
-  var body: some Scene {
-    WindowGroup {
-      LazyView {
-        AppView(appInfo: appInfo)
-      }
+    Window(Text("\(appInfo.name) Help"), id: AppWindowID.help.rawValue) {
+      HelpView(
+        store: Store(
+          initialState: HelpReducer.State()
+        ) {
+          HelpReducer()
+        }
+      )
     }
+    .windowResizability(.contentMinSize)
+
+    Window(Text("Acknowledgments"), id: AppWindowID.acknowledgments.rawValue) {
+      AcknowledgmentsView(
+        store: Store(
+          initialState: AcknowledgmentsReducer.State()
+        ) {
+          AcknowledgmentsReducer()
+        }
+      )
+    }
+    .windowResizability(.contentMinSize)
+#endif
   }
-  #endif
 }

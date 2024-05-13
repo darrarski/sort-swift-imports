@@ -1,7 +1,7 @@
 import Foundation
 
-public struct SortSwiftImports {
-  public enum Error: Swift.Error, Equatable, LocalizedError {
+public struct SortSwiftImports: Sendable {
+  public enum Error: Swift.Error, Equatable, LocalizedError, Sendable {
     case noImportsFound
 
     public var errorDescription: String? {
@@ -12,11 +12,11 @@ public struct SortSwiftImports {
     }
   }
 
-  public init(run: @escaping (String) -> Result<String, Error>) {
+  public init(run: @escaping @Sendable (String) -> Result<String, Error>) {
     self.run = run
   }
 
-  var run: (String) -> Result<String, Error>
+  var run: @Sendable (String) -> Result<String, Error>
 
   public func callAsFunction(in input: String) -> Result<String, Error> {
     run(input)
@@ -66,8 +66,6 @@ extension SortSwiftImports {
   }
 }
 
-#if DEBUG
 extension SortSwiftImports {
-  public static let failing = Self { _ in fatalError() }
+  public static let failing = SortSwiftImports { _ in fatalError() }
 }
-#endif
