@@ -8,7 +8,7 @@ public struct AboutReducer: Sendable {
   @ObservableState
   public struct State: Sendable, Equatable {
     public init(
-      appInfo: AppInfo = AppInfo(.main),
+      appInfo: AppInfo,
       destination: Destination.State? = nil
     ) {
       self.appInfo = appInfo

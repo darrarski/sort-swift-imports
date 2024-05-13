@@ -55,7 +55,9 @@ struct AppView: View {
 #Preview {
   AppView(
     store: Store(
-      initialState: AppReducer.State()
+      initialState: AppReducer.State(
+        appInfo: .stub
+      )
     ) {
       AppReducer()
         ._printChanges()

@@ -8,7 +8,7 @@ import SwiftUI
 
 @main
 struct App: SwiftUI.App {
-  let appInfo = AppInfo(.main)
+  let appInfo = AppInfo(bundle: .main)
   @Dependency(\.openWindow) var openWindow
 
   var body: some Scene {
@@ -16,7 +16,9 @@ struct App: SwiftUI.App {
     WindowGroup {
       AppView(
         store: Store(
-          initialState: AppReducer.State()
+          initialState: AppReducer.State(
+            appInfo: appInfo
+          )
         ) {
           AppReducer()
         }
@@ -26,7 +28,9 @@ struct App: SwiftUI.App {
     Window(appInfo.name, id: AppWindowID.main.rawValue) {
       AppView(
         store: Store(
-          initialState: AppReducer.State()
+          initialState: AppReducer.State(
+            appInfo: appInfo
+          )
         ) {
           AppReducer()
         }
@@ -49,7 +53,9 @@ struct App: SwiftUI.App {
     Window(Text("About \(appInfo.name)"), id: AppWindowID.about.rawValue) {
       AboutView(
         store: Store(
-          initialState: AboutReducer.State()
+          initialState: AboutReducer.State(
+            appInfo: appInfo
+          )
         ) {
           AboutReducer()
         }
