@@ -24,7 +24,7 @@ public struct SortSwiftImports: Sendable {
 }
 
 extension SortSwiftImports {
-  public static let live = Self { input in
+  public static let live = SortSwiftImports { input in
     var lines = input.components(separatedBy: .newlines)
 
     struct Import {
