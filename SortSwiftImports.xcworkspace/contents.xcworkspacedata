@@ -13,4 +13,7 @@
    <FileRef
       location = "group:Project/SortSwiftImports.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:test-plans">
+   </FileRef>
 </Workspace>

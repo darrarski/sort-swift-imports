@@ -1,0 +1,42 @@
+{
+  "configurations" : [
+    {
+      "id" : "2B4E6CE9-7E4A-4D46-9C03-CE994FF24896",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:SortSwiftImports.xcodeproj",
+      "identifier" : "31F7FACF2BF1DF92003728B1",
+      "name" : "SortSwiftImportsApp"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:..",
+        "identifier" : "SortSwiftImportsTests",
+        "name" : "SortSwiftImportsTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/sort-swift-imports-app",
+        "identifier" : "AppFeatureTests",
+        "name" : "AppFeatureTests"
+      }
+    },
+    {
+      "target" : {
+        "containerPath" : "container:..\/sort-swift-imports-app",
+        "identifier" : "EditorFeatureTests",
+        "name" : "EditorFeatureTests"
+      }
+    }
+  ],
+  "version" : 1
+}
