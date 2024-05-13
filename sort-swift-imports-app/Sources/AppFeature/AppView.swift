@@ -16,6 +16,10 @@ struct AppView: View {
           action: \.editor
         )
       )
+      .navigationTitle(store.appInfo.name)
+#if os(iOS)
+      .navigationBarTitleDisplayMode(.inline)
+#endif
     }
 #if os(iOS)
     .sheet(
