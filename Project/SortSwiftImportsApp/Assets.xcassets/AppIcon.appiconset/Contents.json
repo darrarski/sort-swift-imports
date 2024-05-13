@@ -1,6 +1,12 @@
 {
   "images" : [
     {
+      "filename" : "iOS App Store 1024pt 1x.png",
+      "idiom" : "universal",
+      "platform" : "ios",
+      "size" : "1024x1024"
+    },
+    {
       "filename" : "Mac 16pt 1x.png",
       "idiom" : "mac",
       "scale" : "1x",
