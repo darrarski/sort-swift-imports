@@ -11,6 +11,9 @@
       location = "group:sort-swift-imports-app-icon">
    </FileRef>
    <FileRef
-      location = "group:Project/Project.xcodeproj">
+      location = "group:Project/SortSwiftImports.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:test-plans">
    </FileRef>
 </Workspace>

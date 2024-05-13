@@ -7,13 +7,13 @@ final class SourceEditorExtension: NSObject, XCSourceEditorExtension {
     [
       [
         .identifierKey: Bundle(for: type(of: self)).bundleIdentifier! + ".Command",
-        .classNameKey: Command.className(),
-        .nameKey: "Sort swift imports in the current file"
+        .classNameKey: SortImportsCommand.className(),
+        .nameKey: "Sort imports in current file"
       ],
     ]
   }
 
-  final class Command: NSObject, XCSourceEditorCommand {
+  final class SortImportsCommand: NSObject, XCSourceEditorCommand {
     func perform(
       with invocation: XCSourceEditorCommandInvocation,
       completionHandler: @escaping (Error?) -> Void
