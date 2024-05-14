@@ -25,7 +25,7 @@ struct App: SwiftUI.App {
       )
     }
 #elseif os(macOS)
-    Window(appInfo.name, id: AppWindowID.main.rawValue) {
+    WindowGroup {
       AppView(
         store: Store(
           initialState: AppReducer.State(
