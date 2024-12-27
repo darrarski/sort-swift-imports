@@ -163,9 +163,6 @@ for target in package.targets where target.isLocal {
 #if !hasFeature(DisableOutwardActorInference)
   swiftSettings.append(.enableUpcomingFeature("DisableOutwardActorInference"))
 #endif
-#if !hasFeature(InternalImportsByDefault)
-  swiftSettings.append(.enableUpcomingFeature("InternalImportsByDefault"))
-#endif
 #if !hasFeature(IsolatedDefaultValues)
   swiftSettings.append(.enableUpcomingFeature("IsolatedDefaultValues"))
 #endif
